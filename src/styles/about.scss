@@ -49,6 +49,8 @@
     background: linear-gradient(to bottom right, var(--theme-purple), var(--theme-blue));
     margin: 25px 20px;
     border-radius: 7px;
+    display: flex;
+    justify-content: center;
 
     & :hover {
       background-color: azure;
@@ -56,13 +58,13 @@
   }
 }
 
-
 .creator {
   background-color: #fff;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 225px;
   justify-content: center;
   padding: 20px 10px;
   margin: 6px;
@@ -93,5 +95,13 @@
     }
   }
 }
+.ana {
+  margin: 8px;
+}
+
+.emily, .mo {
+  margin: 7px;
+}
+
 
 
