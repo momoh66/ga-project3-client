@@ -1,0 +1,74 @@
+.register-hero {
+  background-color: #fff;
+  padding: 60px 65px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fields {
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+
+  .first {  
+    margin-top: 0;
+  }
+}
+
+.double-field {
+  display: flex;
+  justify-content: space-between;
+
+  input {
+    width: 135px;
+  }
+
+  .field {
+    margin: 0;
+  }
+}
+
+.unequal > .field:first-of-type {
+  .register-input {
+    width: 110px;
+  }
+}
+.unequal > .field:last-of-type {
+  .register-input {
+    width: 160px;
+  }
+}
+
+.register-hero {
+  padding: 30px 35px;
+}
+
+.register-form {
+  padding: 22px 50px;
+
+  button {
+    margin-top: 10px;
+    width: 250px;
+  }
+}
+
+.register-label {
+  font-size: 16px;
+}
+.register-input {
+  font-size: 15px;
+  width: 300px;
+}
+
+
+
+
+.optional {
+  color: #8c8c8c;
+}
+
+.footnote:first-of-type {
+  margin-bottom: 5px;
+}
