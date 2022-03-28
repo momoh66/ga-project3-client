@@ -7,9 +7,9 @@ const Profiles = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const allProfiles = getAllProfiles();
-      console.log('allProfiles', allProfiles);
-      setProfiles(allProfiles);
+      const allProfiles = await getAllProfiles();
+      console.log('allProfiles', allProfiles.body);
+      setProfiles(allProfiles.body);
     };
     getData();
   }, []);

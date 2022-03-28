@@ -5,6 +5,7 @@ import Home from './Home';
 import About from './About';
 import Neighbourhoods from './Neighbourhoods';
 import Profiles from './Profiles';
+import SingleProfile from './SingleProfile';
 import Services from './Services';
 import Register from './Register';
 import Login from './Login';
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/about' element={<About />} />
         <Route path='/neighbourhoods' element={<Neighbourhoods />} />
         <Route path='/profiles' element={<Profiles />} />
+        <Route path='/profiles/:id' element={<SingleProfile />} />
         <Route path='/services' element={<Services />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
