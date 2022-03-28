@@ -73,7 +73,7 @@ const Navbar = () => {
           className={onPage === '/services' ? 'sidebar-item on-page' : 'sidebar-item'}
         >
           <FontAwesomeIcon icon={faCrown} />
-          Services (Needs)
+          Services
         </Link>
         <Link
           to={'/register'}
@@ -87,7 +87,7 @@ const Navbar = () => {
           className={onPage === '/login' ? 'sidebar-item on-page' : 'sidebar-item'}
         >
           <FontAwesomeIcon icon={faUserLock} />
-          Login
+          Log In
         </Link>
       </nav>
     </header>

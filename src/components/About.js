@@ -15,18 +15,8 @@ const About = () => {
               facilis veniam cum, aut, soluta possimus voluptas explicabo minima dicta. Quisquam, ex
               ad delectus rerum quo ab nisi iusto dicta veniam! Eveniet molestiae doloremque commodi
               reiciendis officia laboriosam tempora quaerat excepturi magnam, provident nesciunt,
-              omnis ad neque dolorum quidem quod beatae recusandae, ducimus impedit ex? Commodi
-              repellendus ullam modi ipsum magnam reiciendis minus quidem earum? Neque fugiat
-              temporibus aspernatur ad provident cupiditate, ipsa, dolores atque velit error
-              accusamus iure tempore numquam nesciunt reiciendis corrupti perspiciatis eligendi
-              porro autem eius consequatur! At debitis est, mollitia doloribus reiciendis
-              voluptatum. Quae, dolorum!
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt similique, officia
-              facilis veniam cum, aut, soluta possimus voluptas explicabo minima dicta. Quisquam, ex
-              ad delectus rerum quo ab nisi iusto dicta veniam! Eveniet molestiae doloremque commodi
-              reiciendis officia laboriosam tempora quaerat excepturi magnam, provident nesciunt,
               omnis ad neque dolorum quidem quod beatae recusandae, ducimus impedit ex? Commodi
               repellendus ullam modi ipsum magnam reiciendis minus quidem earum? Neque fugiat
               temporibus aspernatur ad provident cupiditate, ipsa, dolores atque velit error
