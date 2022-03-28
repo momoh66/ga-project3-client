@@ -16,7 +16,7 @@ const About = () => {
               set yourself as a helper or you can ask for help to the ones
               closest to you by making a post with the service you require and
               the urgency of getting it done. The goal of this website is to
-              bring you together to the ones that live close to you.
+              bring you closer to those who live closest to you.
             </p>
           </div>
           <h1>Created By</h1>
