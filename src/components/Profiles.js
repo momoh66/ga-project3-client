@@ -24,7 +24,7 @@ const Profiles = () => {
   // console.log('profiles', profiles);
 
   return (
-    <section>
+    <section className="profiles-section">
       <div className="overall-wrapper">
         <div>
           <div className="search-wrapper">
