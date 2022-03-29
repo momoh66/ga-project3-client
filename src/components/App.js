@@ -7,7 +7,7 @@ import Neighbourhoods from './Neighbourhoods';
 import Profiles from './Profiles';
 import Services from './Services';
 import Register from './Register';
-import Login from './Login';
+import Login from './auth/Login';
 
 const App = () => {
   return (
