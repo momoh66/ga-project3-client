@@ -4,6 +4,7 @@ import treeImg from '../images/tree-transparent.png';
 const Home = () => {
   return (
     <section className='home-section'>
+      {/* <div className='home-border'> */}
       <div className='hero'>
         <div className='hero-text'>
           <div className='hero-text-logo'>
@@ -13,6 +14,7 @@ const Home = () => {
           <p>Anything you need from just next door!</p>
         </div>
       </div>
+      {/* </div> */}
     </section>
   );
 };

@@ -4,6 +4,8 @@
 :root {
   --theme-purple: #6b23cf;
   --theme-blue: #5cc3ff;
+  --nav-height: 60px;
+  --sidebar-height-discrepancy: 40px;
 }
 
 body {
@@ -13,7 +15,8 @@ body {
 }
 
 section {
-  padding-top: 32px;
+  height: calc(100vh - var(--nav-height));
+  padding-top: var(--nav-height);
 }
 
 
@@ -27,8 +30,6 @@ section {
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
-  height: 100vh;
-  // margin-top: 30px;
 }
 
 form {
