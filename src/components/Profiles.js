@@ -25,7 +25,26 @@ const Profiles = () => {
 
   return (
     <section>
-      <h1>Profiles Page</h1>
+      <div className="overall-wrapper">
+        <div>
+          <div className="search-wrapper">
+            <label htmlFor="search">Search Users</label>
+            <input type="search" id="search" />
+          </div>
+          <div className="middle-section">
+            <div className="feed-section">
+              <div className="feed-container">
+                <h1>Feed Section</h1>
+              </div>
+            </div>
+            <div className="profile-section">
+              <div className="profile-container">
+                <h1>Profile Section</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
