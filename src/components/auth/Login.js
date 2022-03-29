@@ -15,8 +15,6 @@ const Login = () => {
   const handlePasswordChange = (e) => {
     setPasswordValue(e.target.value);
   };
-  console.log('emailValue', emailValue);
-  console.log('passwordValue', passwordValue);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
