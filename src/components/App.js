@@ -8,7 +8,7 @@ import Profiles from './Profiles';
 import SingleProfile from './SingleProfile';
 import Services from './Services';
 import Register from './Register';
-import Login from './Login';
+import Login from './auth/Login';
 
 const App = () => {
   return (

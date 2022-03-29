@@ -1,9 +1,8 @@
-//https://images.unsplash.com/photo-1628624747186-a941c476b7ef?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../api/auth';
+import { loginUser } from '../../api/auth';
+
 const Login = () => {
   const navigate = useNavigate();
   const [emailValue, setEmailValue] = React.useState('');
@@ -16,6 +15,8 @@ const Login = () => {
   const handlePasswordChange = (e) => {
     setPasswordValue(e.target.value);
   };
+  console.log('emailValue', emailValue);
+  console.log('passwordValue', passwordValue);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,41 +24,37 @@ const Login = () => {
     navigate('/');
   };
 
-  function handleChange(e) {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  }
-
   return (
-    <section className="form-section">
-      <div className="login-hero">
-        <form className="login-form" onSubmit={handleSubmit}>
+    <section className='form-section'>
+      <div className='login-hero'>
+        <form className='login-form' onSubmit={handleSubmit}>
           <h1>Log In</h1>
-          <div className="field">
-            <label className="label">Email</label>
+          <div className='field'>
+            <label className='label'>Email</label>
             <input
-              className="input"
-              type="text"
-              name="email"
-              placeholder="Enter your email..."
-              onChange={handleChange}
+              className='input'
+              type='text'
+              name='email'
+              placeholder='Enter your email...'
               value={emailValue}
+              onChange={handleEmailChange}
             />
           </div>
-          <div className="field">
-            <label className="label">Password</label>
+          <div className='field'>
+            <label className='label'>Password</label>
             <input
-              className="input"
-              type="password"
-              name="password"
-              placeholder="Enter your password..."
-              onChange={handleChange}
+              className='input'
+              type='password'
+              name='password'
+              placeholder='Enter your password...'
+              onChange={handlePasswordChange}
               value={passwordValue}
             />
           </div>
-          <button type="submit">Log In</button>
+          <button type='submit'>Log In</button>
           <p>
             Don't have an account?&nbsp;
-            <Link className="redirect-page" to={'/register'}>
+            <Link className='redirect-page' to={'/register'}>
               Register
             </Link>
           </p>
