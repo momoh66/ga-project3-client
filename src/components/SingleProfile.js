@@ -6,9 +6,21 @@ import { useParams } from 'react-router-dom';
 
 const SingleProfile = () => {
   const { id } = useParams();
+  console.log(useParams());
   console.log('id', id);
   const [profile, setProfile] = useState(null);
   const [formData, setFormData] = useState({ rating: '' });
+
+  useEffect(() => {
+    const getData = async () => {
+      // const userProfile = await searchProfile(id); // why not working?!?!
+      const userProfile = await searchProfile('wedding');
+      console.log('userProfile.body[0]', userProfile.body[0]);
+      setProfile(userProfile.body[0]);
+      console.log('comments', userProfile.body[0].comments);
+    };
+    getData();
+  }, []);
 
   const onChange = (e) => {
     if (e.target.name === 'rating') {
@@ -22,16 +34,6 @@ const SingleProfile = () => {
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
   };
-
-  useEffect(() => {
-    const getData = async () => {
-      const userProfile = await searchProfile('wedding');
-      console.log('userProfile.body[0]', userProfile.body[0]);
-      setProfile(userProfile.body[0]);
-      console.log('comments', userProfile.body[0].comments);
-    };
-    getData();
-  }, []);
 
   function extractDate(timestamp) {
     return timestamp.split('T')[0];
@@ -104,7 +106,7 @@ const SingleProfile = () => {
                     <label className='label' htmlFor='comment'>
                       Leave a Comment!
                     </label>
-                    <textarea name='comment-box' id='comment' cols='25' rows='6' />
+                    <textarea name='comment-box' id='comment' cols='25' rows='5' />
                   </div>
                   <div className='leave-rating-wrapper'>
                     <label className='label' htmlFor='rating'>
