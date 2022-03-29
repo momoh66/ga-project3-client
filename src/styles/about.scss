@@ -36,7 +36,7 @@
     footer {
       text-align: center;
       color: #8c8c8c;
-      margin-top: 20px
+      margin-top: 20px;
     }
   }
 }
@@ -46,7 +46,11 @@
   justify-content: center;
 
   .creator-border {
-    background: linear-gradient(to bottom right, var(--theme-purple), var(--theme-blue));
+    background: linear-gradient(
+      to bottom right,
+      var(--theme-purple),
+      var(--theme-blue)
+    );
     margin: 25px 20px;
     border-radius: 7px;
     display: flex;
@@ -68,12 +72,12 @@
   justify-content: center;
   padding: 20px 10px;
   margin: 6px;
-  
+
   .creator-img {
     height: 150px;
     border-radius: 5px;
   }
-  
+
   .creator-text {
     text-align: center;
 
@@ -99,9 +103,7 @@
   margin: 8px;
 }
 
-.emily, .mo {
+.emily,
+.mo {
   margin: 7px;
 }
-
-
-

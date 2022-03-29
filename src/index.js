@@ -8,5 +8,6 @@ import './styles/about.scss';
 import './styles/neighbourhoods.scss';
 import './styles/login.scss';
 import './styles/register.scss';
+import './styles/profiles.scss';
 
 ReactDOM.render(<App />, document.getElementById('root'));
