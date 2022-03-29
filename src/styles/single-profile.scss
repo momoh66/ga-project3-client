@@ -1,7 +1,165 @@
-// https://images.unsplash.com/photo-1503785640985-f62e3aeee448?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80
 
 .singleProfile-section {
-  border: 2px solid blue;
-  // padding-top: 80px;
-  // margin-top: 20px;
+  // this image should be the user's uploaded picture of their service (like painting, or wedding planning)
+  background: url('https://images.unsplash.com/photo-1503785640985-f62e3aeee448?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // margin: 20px;
 }
+
+.singleProfile-hero {
+  background-color: #fff;
+  width: 80%;
+  height: 80%;
+  border-radius: 5px;
+  padding: 30px 50px 60px 50px;
+  // padding-top: 30px;
+}
+
+.user-profile {
+  display: flex;
+  margin-top: 15px;
+}
+
+.profile-picture-container {
+  background: linear-gradient(
+      to bottom right,
+      var(--theme-purple),
+      var(--theme-blue)
+    );
+  padding: 10px 11px 7px 11px;
+  border-radius: 55px;
+  margin-left: 15px;
+  position: relative;
+
+  .stars {
+    position: absolute;
+    bottom: -55px;
+    right: -15px;
+    font-size: 40px;
+  }
+}
+
+.profile-picture {
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 30px;
+}
+
+.profile-info {
+  // border: 2px solid red;
+  padding: 20px 30px;
+  margin: 20px;
+  margin-left: 40px;
+  box-shadow: 0px 0px 25px 2px #B8B8B8;
+  border-radius: 10px;
+
+  h1 {
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 5px;
+  }
+
+  .service-text {
+    text-transform: capitalize;
+  }
+
+  p span {
+    font-weight: 500;
+    color: #59ad59;
+    text-transform: uppercase;
+  }
+}
+
+.comments-section {
+  border: 2px solid var(--theme-blue);
+  margin-top: 35px;
+  border-radius: 5px;
+  padding: 20px 30px;
+  
+  h3 {
+    margin: 0;
+    color: var(--theme-purple);
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 20px;
+  }
+}
+
+.comment-show {
+  display: flex;
+  justify-content: space-around;
+}
+
+.leave-comment-container {
+  // border: 2px solid blue;
+  display: flex;
+  flex-direction: column;
+  padding-right: 20px;
+
+  .leave-comment-wrapper, .leave-rating-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .leave-rating-wrapper {
+    margin: 10px 0 20px 0;
+  }
+
+  textarea, #rating {
+    margin-top: 5px;
+    font-family: inherit;
+    border: 1px solid #a8a8a8;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  #rating {
+    width: 25px;
+  }
+
+
+  .submit-comment {
+    background-color: #fff;
+    border: 2px solid var(--theme-blue);
+    border-radius: 5px;
+    width: 195px;
+    padding: 10px 20px;
+    font-family: inherit;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: var(--theme-blue);
+      border: 2px solid var(--theme-purple);
+      color: #000;
+      cursor: pointer;
+    }
+  }
+}
+
+.comments-container {
+  height: 250px;
+  overflow-y: scroll;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+}
+
+.comment {
+  box-shadow: 0px 0px 5px 2px #dbdbdb;
+  border-radius: 5px;
+  margin: 10px 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
