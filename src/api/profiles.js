@@ -1,15 +1,15 @@
 import 'regenerator-runtime/runtime.js';
 import axios from 'axios';
 
+// ! -------------------- PROFILES -------------------- ! //
+
 export const getAllProfiles = async () => {
   const options = {
     method: 'GET',
     url: '/api/profiles'
   };
-
   const { data } = await axios.request(options);
   console.log('data', data);
-
   return data;
 };
 
@@ -18,7 +18,6 @@ export const searchProfile = async (searchTerm) => {
     method: 'GET',
     url: `/api/profiles/${searchTerm}`
   };
-
   const { data } = await axios.request(options);
   return data;
 };
@@ -32,7 +31,6 @@ export const updateProfile = async (profileId, updatedBody) => {
       authorization: `Bearer ${window.sessionStorage.getItem('token')}`
     }
   };
-
   const { data } = await axios.request(options);
   return data;
 };
@@ -46,7 +44,48 @@ export const updateProfile = async (profileId, updatedBody) => {
 //       authorization: `Bearer ${window.sessionStorage.getItem('token')}`
 //     }
 //   };
-
 //   const { data } = await axios.request(options);
 //   return data;
 // };
+
+// ! -------------------- COMMENTS -------------------- ! //
+
+export const createComment = async (profileId, commentBody) => {
+  const options = {
+    method: 'POST',
+    url: `/api/profiles/${profileId}/comments`,
+    data: commentBody,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`
+    }
+  };
+  const { data } = await axios.request(options);
+  return data;
+};
+
+// UPDATE comment
+export const updateComment = async (profileId, commentId, commentBody) => {
+  const options = {
+    method: 'PUT',
+    url: `/api/profiles/${profileId}/comments/${commentId}`,
+    data: commentBody,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`
+    }
+  };
+  const { data } = await axios.request(options);
+  return data;
+};
+
+// DELETE comment
+export const deleteComment = async (profileId, commentId) => {
+  const options = {
+    method: 'DELETE',
+    url: `/api/profiles/${profileId}/comments/${commentId}`,
+    headers: {
+      authorization: `Bearer ${window.sessionStorage.getItem('token')}`
+    }
+  };
+  const { data } = await axios.request(options);
+  return data;
+};
