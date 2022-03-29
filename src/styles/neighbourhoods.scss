@@ -4,14 +4,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // padding: 10px;
-  margin: 0;
   background-image: url(https://images.unsplash.com/photo-1516156008625-3a9d6067fab5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80);
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
-  height: 100vh;
-  // margin-top: 30px;
 }
 
 .neighbourhoods-hero {
@@ -26,14 +22,13 @@
   
   h1 {
     align-self: flex-start;
-    margin-left: 25px;
-    margin-top: 0;
+    margin-left: 50px;
     font-weight: 400;
     font-size: 30px;
   }
 
   .instructions {
-    margin: -10px 75px 20px 75px;
+    margin: -5px 75px 20px 75px;
   }
 }
 
@@ -41,7 +36,7 @@
   // border: 2px solid blue;
   border-radius: 5px;
   padding: 0 20px 10px 20px;
-  height: 68%;
+  height: 75%;
   width: 90%;
   display: flex;
   flex-wrap: wrap;
