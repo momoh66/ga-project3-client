@@ -3,31 +3,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import {loginUser} from '../api/auth'
+import { loginUser } from '../api/auth';
 const Login = () => {
-    const navigate = useNavigate();
-  const [user, setUser] = React.useState({
-    email: '',
-    password: '',
-  });
+  const navigate = useNavigate();
+  const [emailValue, setEmailValue] = React.useState('');
+  const [passwordValue, setPasswordValue] = React.useState('');
+
+  const handleEmailChange = (e) => {
+    setEmailValue(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPasswordValue(e.target.value);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await loginUser({ email: emailValue, password: passwordValue });
+    navigate('/');
+  };
 
   function handleChange(e) {
     setUser({ ...user, [e.target.name]: e.target.value });
   }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    
-    const getData = async () => {
-      try {
-        const { data } = await loginUser(user);
-        localStorage.setItem('accessToken', data.token);
-        navigate('/');
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    getData();
-  };
+
   return (
     <section className="form-section">
       <div className="login-hero">
@@ -41,7 +40,7 @@ const Login = () => {
               name="email"
               placeholder="Enter your email..."
               onChange={handleChange}
-              value={user.email}
+              value={emailValue}
             />
           </div>
           <div className="field">
@@ -52,7 +51,7 @@ const Login = () => {
               name="password"
               placeholder="Enter your password..."
               onChange={handleChange}
-              value={user.password}
+              value={passwordValue}
             />
           </div>
           <button type="submit">Log In</button>
