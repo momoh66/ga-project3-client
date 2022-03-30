@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareH } from '@fortawesome/free-solid-svg-icons';
 
-const SingleProfile = () => {
+const SingleProfile = ({ extractDate, extractTime }) => {
   const { id } = useParams();
   console.log('id', id);
   const [profile, setProfile] = useState(null);
@@ -34,13 +34,13 @@ const SingleProfile = () => {
     }
   };
 
-  function extractDate(timestamp) {
-    return timestamp.split('T')[0];
-  }
+  // function extractDate(timestamp) {
+  //   return timestamp.split('T')[0];
+  // }
 
-  function extractTime(timestamp) {
-    return timestamp.split('T')[1].split('.')[0];
-  }
+  // function extractTime(timestamp) {
+  //   return timestamp.split('T')[1].split('.')[0];
+  // }
 
   function getStars(rating) {
     const numberOfStars = Math.round(Number(rating));

@@ -3,8 +3,12 @@ import { useState, useEffect } from 'react';
 import { getAllPosts } from '../api/posts';
 import { getAllProfiles } from '../api/profiles';
 import { searchProfile } from '../api/profiles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
-const Profiles = () => {
+const Profiles = ({ extractDate, extractTime }) => {
+  const navigate = useNavigate();
   const [profiles, setProfiles] = useState(null);
   const [posts, setPosts] = useState(null);
   const [searchInput, setSearchInput] = useState('');
@@ -20,14 +24,14 @@ const Profiles = () => {
       console.log('allPosts', allPosts);
       setPosts(allPosts);
     };
-    const getSearchProfile = async () => {
-      const searchingProfile = await searchProfile(searchInput);
-      console.log('searchingProfile', searchingProfile);
-      setProfiles(searchingProfile);
-    };
+    // const getSearchProfile = async () => {
+    //   const searchingProfile = await searchProfile(searchInput);
+    //   console.log('searchingProfile', searchingProfile);
+    //   setProfiles(searchingProfile);
+    // };
     getProfileData();
     getPostData();
-    getSearchProfile();
+    // getSearchProfile();
   }, []);
 
   // console.log('profiles', profiles);
@@ -37,60 +41,73 @@ const Profiles = () => {
     setSearchInput(e.target.value);
   };
 
-  if (searchInput.length > 0) {
-    profiles.filter((profile) => {
-      return profile.service.match(searchInput);
-    });
+  // if (searchInput.length > 0) {
+  //   profiles.filter((profile) => {
+  //     return profile.service.match(searchInput);
+  //   });
+  // }
+
+  function navigateToProfile(id) {
+    // console.log('e.target', e.target);
+    // console.log('profile id?', id);
+    navigate(`/single-profile/${id}`);
   }
 
   if (!posts) {
     return <p>Loading...</p>;
   }
-  if (!profiles) {
+  if (!profiles || profiles.length === 0) {
     return <p>Loading...</p>;
   }
 
   return (
-    <section className="profiles-section">
-      <div className="search-wrapper">
-        <label htmlFor="search">Search Users</label>
+    <section className='feed-and-profiles-section'>
+      <div className='search-wrapper'>
+        <label htmlFor='search'></label>
         <input
-          type="search"
-          placeHolder="Search here"
+          type='search'
+          placeholder='Search service, helper name, city or region...'
           onChange={handleChange}
           value={searchInput}
         />
+        <button type='submit'>
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
+        </button>
       </div>
-      <div className="overall-wrapper">
-        <div className="middle-section">
-          <div className="feed-section">
-            <h1>Feed Section</h1>
-            <div className="feed-container">
-              {posts.map((posts) => {
-                return (
-                  <div key={posts._id} className="each-post">
-                    <p>{posts.text}</p>
-                    <p>{posts.service}</p>
-                    <p>{posts.urgency}</p>
-                  </div>
-                );
-              })}
-            </div>
+      <div className='feed-and-profiles-container'>
+        <div className='feed-section'>
+          <h1>News Feed</h1>
+          <div className='feed-container'>
+            {posts.map((post) => {
+              return (
+                <div key={post._id} className='each-post'>
+                  <p className='post-creator'>{`${post.createdByName} ${post.createdBySurname}`}</p>
+                  <p className='post-datestamp'>{extractDate(post.createdAt)}</p>
+                  <p className='post-timestamp'>{extractTime(post.createdAt)}</p>
+                  <p className='post-text'>{post.text}</p>
+                  <p className='post-service'>{post.service}</p>
+                  <p className='post-urgency'>{post.urgency}</p>
+                </div>
+              );
+            })}
           </div>
-          <div className="profile-section">
-            <h1>Profile Section</h1>
-            <div className="profile-container">
-              {profiles.map((profiles) => {
-                return (
-                  <div key={profiles._id} className="each-profile">
-                    <p>{`${profiles.firstName} ${profiles.surname}`}</p>{' '}
-                    <p>{`Rating: ${profiles.averageRating}`}</p>{' '}
-                    <p>{`City: ${profiles.city}`}</p>{' '}
-                    <p>{`Services: ${profiles.services}`}</p>
-                  </div>
-                );
-              })}
-            </div>
+        </div>
+        <div className='profiles-section'>
+          <h1>All Profiles</h1>
+          <div className='profiles-container'>
+            {profiles.map((profile) => {
+              return (
+                <div
+                  key={profile._id}
+                  className='each-profile'
+                  onClick={() => navigateToProfile(profile._id)}
+                >
+                  <p>{`${profile.firstName} ${profile.surname}`}</p>{' '}
+                  <p>{`Average Rating: ${profile.averageRating}`}</p>{' '}
+                  <p>{`City: ${profile.city}`}</p> <p>{`Services: ${profile.services}`}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

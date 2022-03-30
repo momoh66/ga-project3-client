@@ -11,6 +11,13 @@ import Register from './Register';
 import Login from './auth/Login';
 
 const App = () => {
+  function extractDate(timestamp) {
+    return timestamp.split('T')[0];
+  }
+
+  function extractTime(timestamp) {
+    return timestamp.split('T')[1].split('.')[0];
+  }
   return (
     <BrowserRouter>
       <Navbar />
@@ -18,8 +25,14 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/neighbourhoods' element={<Neighbourhoods />} />
-        <Route path='/profiles' element={<Profiles />} />
-        <Route path='/single-profile/:id' element={<SingleProfile />} />
+        <Route
+          path='/profiles'
+          element={<Profiles extractDate={extractDate} extractTime={extractTime} />}
+        />
+        <Route
+          path='/single-profile/:id'
+          element={<SingleProfile extractDate={extractDate} extractTime={extractTime} />}
+        />
         <Route path='/services' element={<Services />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
