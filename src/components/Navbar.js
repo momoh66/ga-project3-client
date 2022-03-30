@@ -12,6 +12,8 @@ import {
   faUserLock,
   faChildReaching,
   faSignOut,
+  faCross,
+  faXmark,
 } from '@fortawesome/free-solid-svg-icons';
 import treeImg from '../images/tree.png';
 import { useLocation } from 'react-router-dom';
@@ -44,11 +46,14 @@ const Navbar = () => {
           <img src={treeImg} alt="tree logo" className="treelogo" />
           Neighbour Needs
         </Link>
-        <Link to={'#'} className="navbar-item bars" onClick={toggleMenu}>
+       {!sideBar? <Link to={'#'} className="navbar-item bars" onClick={toggleMenu}>
           <div className="bar bar1"></div>
           <div className="bar bar2"></div>
           <div className="bar bar3"></div>
-        </Link>
+        </Link>:
+        <Link to={'#'} className="navbar-item xMark" onClick={toggleMenu}>
+          <FontAwesomeIcon icon={faXmark} />
+        </Link>}
       </div>
       <nav
         className={sideBar ? 'sidebar active' : 'sidebar'}
