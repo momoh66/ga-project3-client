@@ -1,10 +1,15 @@
+.register-section {
+  height: 200px;
+}
+
 .register-hero {
-  background-color: #fff;
-  padding: 60px 65px;
+  background-color: rgba(255, 255, 255, 0.95);
+  // padding: 60px 65px;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 485px;
 }
 
 .fields {
@@ -15,6 +20,11 @@
   .first {  
     margin-top: 0;
   }
+
+}
+
+input {
+  font-family: inherit;
 }
 
 .double-field {
