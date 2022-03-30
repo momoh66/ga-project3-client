@@ -70,18 +70,12 @@
 
   .profile-name {
     display: flex;
-    // align-items: center;
 
     .helper-badge {
       font-size: 30px;
       margin-top: 7px;
       margin-left: 15px;
-
       color: var(--theme-blue);
-      // display: flex;
-      // background-color: #000;
-      // border: 2px solid #000;
-      // width: 100px;
     }
   }
 
@@ -145,7 +139,6 @@
   position: absolute;
   z-index: 1;
   left: 110%;
-  // top: 110%;
   top: 30%;
 }
 
