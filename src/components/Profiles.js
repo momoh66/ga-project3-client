@@ -21,9 +21,9 @@ const Profiles = () => {
       setPosts(allPosts);
     };
     const getSearchProfile = async () => {
-      const searchingProfile = await searchProfile();
+      const searchingProfile = await searchProfile(searchInput);
       console.log('searchingProfile', searchingProfile);
-      setSearchInput(searchingProfile);
+      setProfiles(searchingProfile);
     };
     getProfileData();
     getPostData();
