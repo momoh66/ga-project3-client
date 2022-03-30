@@ -24,7 +24,6 @@ const Navbar = () => {
   const [sideBar, setSideBar] = useState(false);
   const [onPage, setOnPage] = useState(location.pathname);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [userId, setUserId] = useState(getLoggedInUserId());
 
   function checkUserLoggedIn() {
     const token = sessionStorage.getItem('token');
@@ -38,12 +37,7 @@ const Navbar = () => {
   useEffect(() => {
     setOnPage(location.pathname);
     setLoggedIn(checkUserLoggedIn);
-    console.log('-------- running useEffect!!!!!!');
-    setUserId(getLoggedInUserId());
   }, [location]);
-
-  // userEffect(()=> {
-  // }, [])
 
   console.log('onPage', onPage);
 
@@ -57,7 +51,7 @@ const Navbar = () => {
           Neighbour Needs
         </Link>
         <div className='navbar-right'>
-          <Link to={`/single-profile/${userId}`} className='navbar-item user-icon'>
+          <Link to={`/single-profile/${getLoggedInUserId()}`} className='navbar-item user-icon'>
             <FontAwesomeIcon icon={faCircleUser} />
           </Link>
           <Link to={'#'} className='navbar-item bars' onClick={toggleMenu}>
