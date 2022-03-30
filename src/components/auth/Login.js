@@ -28,22 +28,24 @@ const Login = () => {
         <form className='login-form' onSubmit={handleSubmit}>
           <h1>Log In</h1>
           <div className='field'>
-            <label className='label'>Email</label>
+            <label htmlFor='email' className='label'>Email</label>
             <input
               className='input'
-              type='text'
+              type='email'
               name='email'
+              id='email'
               placeholder='Enter your email...'
               value={emailValue}
               onChange={handleEmailChange}
             />
           </div>
           <div className='field'>
-            <label className='label'>Password</label>
+            <label htmlFor='password' className='label'>Password</label>
             <input
               className='input'
               type='password'
               name='password'
+              id='password'
               placeholder='Enter your password...'
               onChange={handlePasswordChange}
               value={passwordValue}
