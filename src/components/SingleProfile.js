@@ -1,26 +1,25 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { searchProfile } from '../api/profiles';
+import { getProfileById } from '../api/profiles';
 import profilePic from '../images/bitmoji.png';
 import { useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSquareH } from '@fortawesome/free-solid-svg-icons';
 
 const SingleProfile = () => {
   const { id } = useParams();
-  console.log(useParams());
   console.log('id', id);
   const [profile, setProfile] = useState(null);
   const [formData, setFormData] = useState({ rating: '' });
 
   useEffect(() => {
     const getData = async () => {
-      // const userProfile = await searchProfile(id); // why not working?!?!
-      const userProfile = await searchProfile('wedding');
-      console.log('userProfile.body[0]', userProfile.body[0]);
-      setProfile(userProfile.body[0]);
-      console.log('comments', userProfile.body[0].comments);
+      const userProfile = await getProfileById(id);
+      console.log('data.body:', userProfile.body);
+      setProfile(userProfile.body);
     };
     getData();
-  }, []);
+  }, [id]);
 
   const onChange = (e) => {
     if (e.target.name === 'rating') {
@@ -61,6 +60,10 @@ const SingleProfile = () => {
     }
   }
 
+  function handleHelperToggle(e) {
+    console.log('helper button:', e.target.value);
+  }
+
   return (
     <section className='singleProfile-section'>
       <div className='singleProfile-hero'>
@@ -70,22 +73,31 @@ const SingleProfile = () => {
           <div className='singleProfile-container'>
             <div className='user-profile'>
               <div className='profile-picture-container'>
-                <img
-                  className='profile-picture'
-                  src={profilePic}
-                  alt='profile picture'
-                  width='200px'
-                />
+                <img className='profile-picture' src={profilePic} alt='profile picture' />
                 <p className='stars'>{getStars(profile.averageRating)}</p>
               </div>
               <div className='profile-info'>
-                <h1>{`${profile.firstName} ${profile.surname}`}</h1>
-                <p className='service-text'>
+                <div className='profile-name'>
+                  <h1>{`${profile.firstName} ${profile.surname}`}</h1>
+                  <span
+                    className={profile.isHelper ? 'hovertext' : 'hide'}
+                    data-hover='Certified Helper at Neighbour Needs!'
+                  >
+                    <FontAwesomeIcon className='helper-badge' icon={faSquareH} />
+                  </span>
+                </div>
+                <p className={!profile.isHelper ? 'helper-toggle' : 'hide'}>
+                  <span id='helper'>Become a helper:</span>&nbsp;
+                  <button className='helper-button' onClick={handleHelperToggle}>
+                    Yes
+                  </button>
+                </p>
+                <p className={profile.isHelper ? 'service-text' : 'hide'}>
                   <span>Service:</span>&nbsp;
                   {profile.services[0]}
                 </p>
-                <p>
-                  <span>Rating:</span>&nbsp;
+                <p className={profile.isHelper ? '' : 'hide'}>
+                  <span>Average Rating:</span>&nbsp;
                   {profile.averageRating}
                 </p>
                 <p>
@@ -98,7 +110,7 @@ const SingleProfile = () => {
                 </p>
               </div>
             </div>
-            <div className='comments-section'>
+            <div className={profile.isHelper ? 'comments-section' : 'hide'}>
               <h3>Comments</h3>
               <div className='comment-show'>
                 <div className='leave-comment-container'>
@@ -106,7 +118,12 @@ const SingleProfile = () => {
                     <label className='label' htmlFor='comment'>
                       Leave a Comment!
                     </label>
-                    <textarea name='comment-box' id='comment' cols='25' rows='5' />
+                    <textarea
+                      name='comment-box'
+                      id='comment'
+                      cols='25'
+                      rows={profile.comments.length !== 0 ? '5' : '3'}
+                    />
                   </div>
                   <div className='leave-rating-wrapper'>
                     <label className='label' htmlFor='rating'>
@@ -125,7 +142,7 @@ const SingleProfile = () => {
                   </button>
                 </div>
                 <div className='comments-container'>
-                  {!profile.comments ? (
+                  {profile.comments.length === 0 ? (
                     <p>No comments yet. Be the first to leave one!</p>
                   ) : (
                     <div className='comments-container'>
