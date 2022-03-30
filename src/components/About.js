@@ -103,6 +103,14 @@ const About = () => {
               </div>
             </div>
           </div>
+          <h1>Acknowledgements</h1>
+          <div className="about-text">
+            <p>
+              We would like to acknowledge our fellow classmates who have
+              consented to sharing their picture on our website as example
+              users.
+            </p>
+          </div>
           <footer>Created at GA SEI62 &#126; Copyright &copy; 2022</footer>
         </div>
       </div>
