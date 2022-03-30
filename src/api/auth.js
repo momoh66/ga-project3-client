@@ -2,7 +2,7 @@ import 'regenerator-runtime/runtime.js';
 import axios from 'axios';
 
 export const loginUser = async (credentials) => {
-  console.log('credentials', credentials);
+  // console.log('credentials', credentials);
   const options = {
     method: 'POST',
     url: '/api/login',
@@ -20,14 +20,14 @@ export const loginUser = async (credentials) => {
 };
 
 export const registerUser = async(user) => {
-    const options = {
+  console.log('user', user);
+  const options = {
     method: 'POST',
     url: '/api/register',
-    data: user
+    data: user,
   };
 
   const { data } = await axios.request(options);
 
   return data;
-
 }
