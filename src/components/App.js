@@ -16,7 +16,7 @@ const App = () => {
   }
 
   function extractTime(timestamp) {
-    return timestamp.split('T')[1].split('.')[0];
+    return timestamp.split('T')[1].split('.')[0].slice(0, -3);
   }
   return (
     <BrowserRouter>
