@@ -11,7 +11,6 @@ import {
   faCrown,
   faUserLock,
   faChildReaching,
-  faCouch,
   faSignOut,
 } from '@fortawesome/free-solid-svg-icons';
 import treeImg from '../images/tree.png';
