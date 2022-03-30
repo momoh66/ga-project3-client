@@ -13,6 +13,16 @@ export const getAllProfiles = async () => {
   return data;
 };
 
+export const getProfileById = async (id) => {
+  const options = {
+    method: 'GET',
+    url: `/api/single-profile/${id}`
+  };
+  const { data } = await axios.request(options);
+  console.log('data', data);
+  return data;
+};
+
 export const searchProfile = async (searchTerm) => {
   const options = {
     method: 'GET',
