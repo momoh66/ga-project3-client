@@ -112,6 +112,19 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  .helper-button {
+    border: 2px solid var(--theme-blue);
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 5px 10px;
+    font-family: inherit;
+
+    &:hover {
+      border: 2px solid var(--theme-purple);
+      cursor: pointer;
+    }
+  }
 }
 
 .hide {
@@ -208,6 +221,10 @@
       border: 2px solid var(--theme-purple);
       color: #000;
       cursor: pointer;
+    }
+
+    &:active {
+      transform: scale(0.97);
     }
   }
 }
