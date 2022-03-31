@@ -63,7 +63,7 @@ export const updateProfile = async (profileId, updatedBody) => {
 export const createComment = async (profileId, commentBody) => {
   const options = {
     method: 'POST',
-    url: `/api/profiles/${profileId}/comments`,
+    url: `/api/profile/${profileId}/comments`,
     data: commentBody,
     headers: {
       authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
@@ -77,7 +77,7 @@ export const createComment = async (profileId, commentBody) => {
 export const updateComment = async (profileId, commentId, commentBody) => {
   const options = {
     method: 'PUT',
-    url: `/api/profiles/${profileId}/comments/${commentId}`,
+    url: `/api/profile/${profileId}/comments/${commentId}`,
     data: commentBody,
     headers: {
       authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
@@ -91,7 +91,7 @@ export const updateComment = async (profileId, commentId, commentBody) => {
 export const deleteComment = async (profileId, commentId) => {
   const options = {
     method: 'DELETE',
-    url: `/api/profiles/${profileId}/comments/${commentId}`,
+    url: `/api/profile/${profileId}/comments/${commentId}`,
     headers: {
       authorization: `Bearer ${window.sessionStorage.getItem('token')}`,
     },

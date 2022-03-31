@@ -1,16 +1,16 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { getProfileById } from '../api/profiles';
-import profilePic from '../images/bitmoji.png';
+import { createComment, getProfileById, deleteComment } from '../api/profiles';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSquareH } from '@fortawesome/free-solid-svg-icons';
+import { faSquareH, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { getLoggedInUserId } from '../lib/auth';
 
 const SingleProfile = ({ extractDate, extractTime }) => {
   const { id } = useParams();
-  console.log('id', id);
+  // console.log('id', id);
   const [profile, setProfile] = useState(null);
-  const [formData, setFormData] = useState({ rating: '' });
+  const [formData, setFormData] = useState({ comment: '', rating: '' });
 
   useEffect(() => {
     const getData = async () => {
@@ -21,26 +21,35 @@ const SingleProfile = ({ extractDate, extractTime }) => {
     getData();
   }, [id]);
 
-  const onChange = (e) => {
+  /** Handles Comment text and Rating changes: **/
+  const handleInputChange = (e) => {
     if (e.target.name === 'rating') {
       const inputValue = parseInt(e.target.value);
+      console.log(inputValue);
       if (inputValue > 5 || inputValue < 1) {
         return null;
       } else {
         setFormData({ ...formData, rating: inputValue });
       }
     } else {
+      // console.log(e.target.value);
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
   };
 
-  // function extractDate(timestamp) {
-  //   return timestamp.split('T')[0];
-  // }
+  async function handleCommentSubmit(e) {
+    console.log('clicked!');
+    e.preventDefault();
+    const data = await createComment(id, { text: formData.comment, rating: formData.rating });
+    console.log('FORM DATA', data);
+    setProfile(data.savedProfile);
+    setFormData({ comment: '', rating: '' });
+  }
 
-  // function extractTime(timestamp) {
-  //   return timestamp.split('T')[1].split('.')[0];
-  // }
+  async function handleDeleteComment(commentId) {
+    const data = await deleteComment(id, commentId);
+    setProfile(data.body);
+  }
 
   function getStars(rating) {
     const numberOfStars = Math.round(Number(rating));
@@ -73,7 +82,20 @@ const SingleProfile = ({ extractDate, extractTime }) => {
           <div className='singleProfile-container'>
             <div className='user-profile'>
               <div className='profile-picture-container'>
-                <img className='profile-picture' src={profilePic} alt='profile picture' />
+                <img
+                  className='profile-picture'
+                  src={
+                    profile.imageProfile
+                      ? profile.imageProfile
+                      : 'https://images.unsplash.com/photo-1530842128367-9e448d986a75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80'
+                  }
+                  alt='profile picture'
+                  onError={({ currentTarget }) => {
+                    currentTarget.onerror = null; // prevents looping
+                    currentTarget.src =
+                      'https://images.unsplash.com/photo-1530842128367-9e448d986a75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80';
+                  }}
+                />
                 <p className='stars'>{getStars(profile.averageRating)}</p>
               </div>
               <div className='profile-info'>
@@ -105,8 +127,8 @@ const SingleProfile = ({ extractDate, extractTime }) => {
                   {`${profile.region} ${profile.city}`}
                 </p>
                 <p>
-                  <span>Bio:</span>&nbsp;Hey There! I'm an interior designer and would love to help
-                  you out with any work in this area you might need! Give me a shout!
+                  <span>Bio:</span>&nbsp;
+                  {profile.bio}
                 </p>
               </div>
             </div>
@@ -119,8 +141,10 @@ const SingleProfile = ({ extractDate, extractTime }) => {
                       Leave a Comment!
                     </label>
                     <textarea
-                      name='comment-box'
+                      onChange={handleInputChange}
+                      name='comment'
                       id='comment'
+                      value={formData.comment}
                       cols='25'
                       rows={profile.comments.length !== 0 ? '5' : '3'}
                     />
@@ -130,34 +154,44 @@ const SingleProfile = ({ extractDate, extractTime }) => {
                       Leave a rating (1-5)!
                     </label>
                     <input
-                      onChange={onChange}
+                      onChange={handleInputChange}
                       value={formData.rating}
                       type='number'
                       id='rating'
                       name='rating'
                     />
                   </div>
-                  <button type='submit' className='submit-comment'>
-                    Submit
-                  </button>
+                  <input
+                    type='submit'
+                    className={getLoggedInUserId() ? 'submit-comment' : 'submit-comment-disabled'}
+                    onClick={handleCommentSubmit}
+                    value={getLoggedInUserId() ? 'Submit' : 'You must be logged in to comment'}
+                  />
                 </div>
                 <div className='comments-container'>
                   {profile.comments.length === 0 ? (
                     <p>No comments yet. Be the first to leave one!</p>
                   ) : (
-                    <div className='comments-container'>
-                      {profile.comments.map((comment) => (
-                        <div key={comment._id} className='comment'>
-                          <p className='commentText'>{comment.text}</p>
-                          <p className='commentRating'>{comment.rating}</p>
-                          <p className='commentRating'>{`${comment.createdByName} ${comment.createdBySurname}`}</p>
-                          <div className='comment-datetime'>
-                            <p className='commentRating'>{extractDate(comment.createdAt)}</p>
-                            <p className='commentRating'>{extractTime(comment.createdAt)}</p>
-                          </div>
+                    // <div className='comments-container'>
+                    profile.comments.map((comment) => (
+                      <div key={comment._id} className='comment'>
+                        <div className='name-and-xMark'>
+                          <p className='commentName'>{`${comment.createdByName} ${comment.createdBySurname}`}</p>
+                          {getLoggedInUserId() === comment.createdById && (
+                            <FontAwesomeIcon
+                              className='delete-comment'
+                              icon={faXmark}
+                              onClick={() => handleDeleteComment(comment._id)}
+                            />
+                          )}
                         </div>
-                      ))}
-                    </div>
+                        <p className='commentDateTime'>{`${extractTime(
+                          comment.createdAt
+                        )}, ${extractDate(comment.createdAt)}`}</p>
+                        <p className='commentText'>{comment.text}</p>
+                        <p className='commentRating'>Rating: {comment.rating}</p>
+                      </div>
+                    ))
                   )}
                 </div>
                 {/* <div className='comments-container'>
