@@ -23,51 +23,54 @@ const Login = () => {
   };
 
   return (
-    <section className="form-section">
-      <div className="login-hero">
-        <form className="login-form" onSubmit={handleSubmit}>
+    <section className='form-section'>
+      <div className='login-hero'>
+        <form className='login-form' onSubmit={handleSubmit}>
           <h1>Log In</h1>
-          <div className="field">
-            <label htmlFor="email" className="label">
+          <div className='field'>
+            <label htmlFor='email' className='label'>
               Email
             </label>
             <input
-              className="input"
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Enter your email..."
+              className='input'
+              type='email'
+              name='email'
+              id='email'
+              placeholder='Enter your email...'
               value={emailValue}
               onChange={handleEmailChange}
-              autoComplete="off"
+              autoComplete='off'
               required
             />
           </div>
-          <div className="field">
-            <label htmlFor="password" className="label">
+          <div className='field'>
+            <label htmlFor='password' className='label'>
               Password
             </label>
             <input
-              className="input"
-              type="password"
-              name="password"
-              id="password"
-              placeholder="Enter your password..."
+              className='input'
+              type='password'
+              name='password'
+              id='password'
+              placeholder='Enter your password...'
               onChange={handlePasswordChange}
               value={passwordValue}
-              autoComplete="off"
+              autoComplete='off'
               required
             />
           </div>
-          <button type="submit">Log In</button>
+          <button type='submit'>Log In</button>
           <p>
             Don't have an account?&nbsp;
-            <Link className="redirect-page" to={'/register'}>
+            <Link className='redirect-page' to={'/register'}>
               Register
             </Link>
           </p>
         </form>
       </div>
+      <footer id='login-register-footer'>
+        Created at GA SEI62 &#126; Copyright &copy; 2022 A. Borges, E. Daykin, M. Mohamed
+      </footer>
     </section>
   );
 };

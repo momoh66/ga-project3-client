@@ -101,7 +101,6 @@ const Profiles = ({ extractDate, extractTime }) => {
               );
             })}
           </div>
-
         </div>
         <div className='profiles-section'>
           <h1>All Profiles</h1>
@@ -129,6 +128,9 @@ const Profiles = ({ extractDate, extractTime }) => {
           </div>
         </div>
       </div>
+      <footer id='profiles-footer'>
+        Created at GA SEI62 &#126; Copyright &copy; 2022 A. Borges, E. Daykin, M. Mohamed
+      </footer>
     </section>
   );
 };
