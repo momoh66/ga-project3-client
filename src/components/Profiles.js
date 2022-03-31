@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { getAllPosts } from '../api/posts';
+import { createPosts } from '../api/posts';
 import { getAllProfiles } from '../api/profiles';
 import { searchProfile } from '../api/profiles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,6 +13,7 @@ const Profiles = ({ extractDate, extractTime }) => {
   const [profiles, setProfiles] = useState(null);
   const [posts, setPosts] = useState(null);
   const [searchInput, setSearchInput] = useState('');
+  const [newPost, setNewPost] = useState(null);
 
   useEffect(() => {
     const getProfileData = async () => {
@@ -24,8 +26,14 @@ const Profiles = ({ extractDate, extractTime }) => {
       console.log('allPosts', allPosts);
       setPosts(allPosts);
     };
+    const createNewPost = async () => {
+      const creatingPosts = await createPosts();
+      console.log('creatingPosts', creatingPosts);
+      setNewPost(creatingPosts.body);
+    };
     getProfileData();
     getPostData();
+    createNewPost();
   }, []);
 
   const filterProfiles = async () => {
@@ -45,12 +53,12 @@ const Profiles = ({ extractDate, extractTime }) => {
   }
 
   return (
-    <section className='feed-and-profiles-section'>
-      <div className='search-wrapper'>
-        <label htmlFor='search'></label>
+    <section className="feed-and-profiles-section">
+      <div className="search-wrapper">
+        <label htmlFor="search"></label>
         <input
-          type='search'
-          placeholder='Search service, helper name, city or region...'
+          type="search"
+          placeholder="Search service, helper name, city or region..."
           onChange={handleSearchChange}
           value={searchInput}
         />
@@ -58,10 +66,10 @@ const Profiles = ({ extractDate, extractTime }) => {
           <FontAwesomeIcon icon={faMagnifyingGlass} />
         </button> */}
       </div>
-      <div className='feed-and-profiles-container'>
-        <div className='feed-section'>
+      <div className="feed-and-profiles-container">
+        <div className="feed-section">
           <h1>News Feed</h1>
-          <div className='feed-container'>
+          <div className="feed-container">
             {!posts ? (
               <p>Loading Feed...</p>
             ) : posts.length === 0 ? (
@@ -69,29 +77,33 @@ const Profiles = ({ extractDate, extractTime }) => {
             ) : (
               posts.map((post) => {
                 return (
-                  <div key={post._id} className='each-post'>
-                    <p className='post-creator'>{`${post.createdByName} ${post.createdBySurname}`}</p>
-                    <p className='post-datetime'>{`${extractTime(post.createdAt)}, ${extractDate(
+                  <div key={post._id} className="each-post">
+                    <p className="post-creator">{`${post.createdByName} ${post.createdBySurname}`}</p>
+                    <p className="post-datetime">{`${extractTime(
                       post.createdAt
-                    )}`}</p>
-                    <p className='post-service'>{post.service}</p>
-                    <p className='post-text-wrapper'>
-                      <span className='quotes'>&ldquo;</span>
+                    )}, ${extractDate(post.createdAt)}`}</p>
+                    <p className="post-service">{post.service}</p>
+                    <p className="post-text-wrapper">
+                      <span className="quotes">&ldquo;</span>
                       <br />
-                      <span className='post-text'>&emsp;&emsp;&emsp;{post.text}</span>
+                      <span className="post-text">
+                        &emsp;&emsp;&emsp;{post.text}
+                      </span>
                       <br />
-                      <span className='quotes'>&rdquo;</span>
+                      <span className="quotes">&rdquo;</span>
                     </p>
-                    <p className={post.urgency ? 'post-urgency' : 'hide'}>{post.urgency}</p>
+                    <p className={post.urgency ? 'post-urgency' : 'hide'}>
+                      {post.urgency}
+                    </p>
                   </div>
                 );
               })
             )}
           </div>
         </div>
-        <div className='profiles-section'>
+        <div className="profiles-section">
           <h1>All Profiles</h1>
-          <div className='profiles-container'>
+          <div className="profiles-container">
             {profiles === null ? (
               <p>Loading profiles...</p>
             ) : profiles.length === 0 ? (
@@ -101,29 +113,29 @@ const Profiles = ({ extractDate, extractTime }) => {
                 return (
                   <div
                     key={profile._id}
-                    className='each-profile'
+                    className="each-profile"
                     onClick={() => navigateToProfile(profile._id)}
                   >
-                    <div className='profile-pic-and-name'>
+                    <div className="profile-pic-and-name">
                       <img
-                        className='profile-pic'
+                        className="profile-pic"
                         src={profile.imageProfile}
-                        alt='profile picture'
-                        width='70px'
-                        height='70px'
+                        alt="profile picture"
+                        width="70px"
+                        height="70px"
                       />
-                      <p className='profile-name'>
+                      <p className="profile-name">
                         <span>{profile.firstName}</span>
                         <span>{profile.surname}</span>
                       </p>
                     </div>
-                    <p className='profile-rating'>
+                    <p className="profile-rating">
                       Average Rating: <span>{profile.averageRating}</span>
                     </p>
-                    <p className='profile-city'>
+                    <p className="profile-city">
                       City: <span>{profile.city}</span>
                     </p>
-                    <p className='profile-services'>
+                    <p className="profile-services">
                       Services: <span>{profile.services}</span>
                     </p>
                   </div>
@@ -133,8 +145,9 @@ const Profiles = ({ extractDate, extractTime }) => {
           </div>
         </div>
       </div>
-      <footer id='profiles-footer'>
-        Created at GA SEI62 &#126; Copyright &copy; 2022 A. Borges, E. Daykin, M. Mohamed
+      <footer id="profiles-footer">
+        Created at GA SEI62 &#126; Copyright &copy; 2022 A. Borges, E. Daykin,
+        M. Mohamed
       </footer>
     </section>
   );
