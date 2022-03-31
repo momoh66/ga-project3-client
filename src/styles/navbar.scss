@@ -128,3 +128,15 @@ header {
     background: none;
   }
 }
+.welcome-banner{
+  color: #fff;
+  text-align: left;
+  font-size: 30px;
+  font-weight: 300;
+  background: linear-gradient(90deg, var(--theme-purple), var(--theme-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+}
