@@ -67,7 +67,8 @@ const Navbar = () => {
             <>
               {' '}
               <p className='welcome-banner'>
-                Welcome home {profile.firstName} {profile.surname} !
+                <span>Welcome home</span>
+                <span>{`${profile.firstName} ${profile.surname}!`}</span>
               </p>
               <Link to={`/single-profile/${id}`} className='navbar-item user-icon'>
                 <FontAwesomeIcon icon={faCircleUser} />
