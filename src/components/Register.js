@@ -116,7 +116,7 @@ const Register = () => {
             <div className='fields-right'>
               <div className='field first'>
                 <label htmlFor='services' className='register-label optional'>
-                  Services (if you'd like to help)
+                  Services (if you'd like to help others)
                 </label>
                 <input
                   className='register-input'
