@@ -124,7 +124,7 @@ const SingleProfile = ({ extractDate, extractTime }) => {
             <div className={profile.isHelper ? 'comments-section' : 'hide'}>
               <h3>Comments</h3>
               <div className='comment-show'>
-                <form className='leave-comment-container'>
+                <div className='leave-comment-container'>
                   <div className='leave-comment-wrapper'>
                     <label className='label' htmlFor='comment'>
                       Leave a Comment!
@@ -153,25 +153,22 @@ const SingleProfile = ({ extractDate, extractTime }) => {
                   <button type='submit' className='submit-comment' onClick={handleCommentSubmit}>
                     Submit
                   </button>
-                </form>
+                </div>
                 <div className='comments-container'>
                   {profile.comments.length === 0 ? (
                     <p>No comments yet. Be the first to leave one!</p>
                   ) : (
-                    <div className='comments-container'>
-                      {profile.comments.map((comment) => (
-                        <div key={comment._id} className='comment'>
-                          <p className='commentText'>{comment.text}</p>
-                          <p className='commentRating'>{comment.rating}</p>
-                          <p className='commentRating'>{`${comment.createdByName} ${comment.createdBySurname}`}</p>
-                          <div className='comment-datetime'>
-                            <p className='commentRating'>{comment.createdAt}</p>
-                            {/* <p className='commentRating'>{extractDate(comment.createdAt)}</p> */}
-                            {/* <p className='commentRating'>{extractTime(comment.createdAt)}</p> */}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                    // <div className='comments-container'>
+                    profile.comments.map((comment) => (
+                      <div key={comment._id} className='comment'>
+                        <p className='commentName'>{`${comment.createdByName} ${comment.createdBySurname}`}</p>
+                        <p className='commentDateTime'>{`${extractTime(
+                          comment.createdAt
+                        )}, ${extractDate(comment.createdAt)}`}</p>
+                        <p className='commentText'>{comment.text}</p>
+                        <p className='commentRating'>Rating: {comment.rating}</p>
+                      </div>
+                    ))
                   )}
                 </div>
                 {/* <div className='comments-container'>
