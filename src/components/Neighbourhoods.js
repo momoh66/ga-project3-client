@@ -7,7 +7,7 @@ const Neighbourhoods = () => {
       <div className='neighbourhoods-hero'>
         <h1>Neighbourhoods</h1>
         <p className='instructions'>
-          Choose from one of the neighbourhoods below to start browing any neighbours who might be
+          Choose from one of the neighbourhoods below to start browsing any neighbours who might be
           able to help you out!
         </p>
         <div className='neighbourhoods-container'>

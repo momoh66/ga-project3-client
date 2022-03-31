@@ -150,19 +150,7 @@ const Register = () => {
                   <label htmlFor='region' className='register-label'>
                     Region*
                   </label>
-                  {/* <input
-                    className="register-input"
-                    type="text"
-                    placeholder="North/West/Central..."
-                    name="region"
-                    id="region"
-                    onChange={handleChange}
-                    value={user.region}
-                    autoComplete='off'
-                    required
-                  /> */}
                   <select
-                    
                     className="register-input"
                     type="text"
                     placeholder="North/West/Central..."

@@ -1,20 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { searchProfile, getAllProfiles } from '../api/profiles';
 const Services = () => {
+  const [profiles, setProfiles] = useState(null);
   const navigate = useNavigate();
   useEffect(() => {
     const getData = async () => {
       const allProfiles = await getAllProfiles();
       console.log('allProfiles', allProfiles.body);
+      setProfiles(allProfiles.body);
     };
-  });
+    getData();
+  }, []);
+
   const handleClick = async (e) => {
     e.preventDefault();
-    const clickedLink = e.target.value;
-    await searchProfile(margery);
-    console.log('clickedLink', clickedLink);
-    // navigate(`/${clickedLink}`);
+    const clickedButton = e.target.innerHTML;
+    const searchProfiles = await searchProfile(clickedButton);
+    navigate(`/single-profile/${id}`);
+    const id = searchProfiles.body[0]._id;
+    console.log('searchProfile(clickedButton)', searchProfiles.body[0]._id);
   };
 
   return (
@@ -27,12 +32,19 @@ const Services = () => {
         </p>
         <div className="services-container">
           <div className="service-border">
-            {getData.map((profile) => (
-              <button className="service-card" onClick={handleClick}>
-                profile.services
-              </button>
-            )) 
-            }
+            {!profiles ? (
+              <p>Loading Services...</p>
+            ) : (
+              profiles.map((profile) => (
+                <button
+                  key={profile._id}
+                  className="service-card"
+                  onClick={handleClick}
+                >
+                  {profile.services}
+                </button>
+              ))
+            )}
           </div>
         </div>
       </div>
