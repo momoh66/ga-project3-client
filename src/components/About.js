@@ -414,7 +414,9 @@ const About = () => {
               </div>
             </div>
           </div>
-          <footer>Created at GA SEI62 &#126; Copyright &copy; 2022</footer>
+          <footer>
+            Created at GA SEI62 &#126; Copyright &copy; 2022 A. Borges, E. Daykin, M. Mohamed
+          </footer>
         </div>
       </div>
     </section>
