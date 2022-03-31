@@ -114,8 +114,8 @@ const SingleProfile = ({ extractDate, extractTime }) => {
                   {`${profile.region} ${profile.city}`}
                 </p>
                 <p>
-                  <span>Bio:</span>&nbsp;Hey There! I'm an interior designer and would love to help
-                  you out with any work in this area you might need! Give me a shout!
+                  <span>Bio:</span>&nbsp;
+                  {profile.bio}
                 </p>
               </div>
             </div>
