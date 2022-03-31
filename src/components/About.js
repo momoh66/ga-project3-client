@@ -92,8 +92,8 @@ const About = () => {
           <h1>Acknowledgements</h1>
           <div className='about-text'>
             <p>
-              We would like to acknowledge our fellow classmates who have consented to sharing their
-              picture on our website as example users.
+              We would like to acknowledge our fellow GA classmates who have consented to sharing
+              their picture on our website as example users.
             </p>
             <div className='users-container'>
               <div className='user ash'>

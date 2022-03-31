@@ -24,40 +24,24 @@ const Profiles = ({ extractDate, extractTime }) => {
       console.log('allPosts', allPosts);
       setPosts(allPosts);
     };
-    // const getSearchProfile = async () => {
-    //   const searchingProfile = await searchProfile(searchInput);
-    //   console.log('searchingProfile', searchingProfile);
-    //   setProfiles(searchingProfile);
-    // };
     getProfileData();
     getPostData();
-    // getSearchProfile();
   }, []);
 
-  // console.log('profiles', profiles);
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    setSearchInput(e.target.value);
+  const filterProfiles = async () => {
+    console.log('searchingProfile...');
+    const filteredProfiles = await searchProfile(searchInput);
+    setProfiles(filteredProfiles.body);
   };
 
-  // if (searchInput.length > 0) {
-  //   profiles.filter((profile) => {
-  //     return profile.service.match(searchInput);
-  //   });
-  // }
+  function handleSearchChange(e) {
+    console.log(e.target.value);
+    setSearchInput(e.target.value);
+    filterProfiles(searchInput);
+  }
 
   function navigateToProfile(id) {
-    // console.log('e.target', e.target);
-    // console.log('profile id?', id);
     navigate(`/single-profile/${id}`);
-  }
-
-  if (!posts) {
-    return <p>Loading...</p>;
-  }
-  if (!profiles || profiles.length === 0) {
-    return <p>Loading...</p>;
   }
 
   return (
@@ -67,65 +51,85 @@ const Profiles = ({ extractDate, extractTime }) => {
         <input
           type='search'
           placeholder='Search service, helper name, city or region...'
-          onChange={handleChange}
+          onChange={handleSearchChange}
           value={searchInput}
         />
-        <button type='submit'>
+        {/* <button type='submit'>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </button>
+        </button> */}
       </div>
       <div className='feed-and-profiles-container'>
         <div className='feed-section'>
           <h1>News Feed</h1>
           <div className='feed-container'>
-            {posts.map((post) => {
-              return (
-                <div key={post._id} className='each-post'>
-                  <p className='post-creator'>{`${post.createdByName} ${post.createdBySurname}`}</p>
-                  <p className='post-datetime'>{`${extractTime(post.createdAt)}, ${extractDate(
-                    post.createdAt
-                  )}`}</p>
-                  <p className='post-service'>{post.service}</p>
-                  <p className='post-text-wrapper'>
-                    <span>&ldquo;</span>
-                    <br />
-                    <p className='post-text'>&emsp;&emsp;&emsp;{post.text}</p>
-                    <br />
-                    <span>&rdquo;</span>
-                  </p>
-                  <p className={post.urgency ? 'post-urgency' : 'hide'}>
-                    {/* <span>Urgency:</span>&nbsp; */}
-                    {post.urgency}
-                  </p>
-                </div>
-              );
-            })}
+            {!posts ? (
+              <p>Loading Feed...</p>
+            ) : posts.length === 0 ? (
+              <p>No posts in feed yet.</p>
+            ) : (
+              posts.map((post) => {
+                return (
+                  <div key={post._id} className='each-post'>
+                    <p className='post-creator'>{`${post.createdByName} ${post.createdBySurname}`}</p>
+                    <p className='post-datetime'>{`${extractTime(post.createdAt)}, ${extractDate(
+                      post.createdAt
+                    )}`}</p>
+                    <p className='post-service'>{post.service}</p>
+                    <p className='post-text-wrapper'>
+                      <span className='quotes'>&ldquo;</span>
+                      <br />
+                      <span className='post-text'>&emsp;&emsp;&emsp;{post.text}</span>
+                      <br />
+                      <span className='quotes'>&rdquo;</span>
+                    </p>
+                    <p className={post.urgency ? 'post-urgency' : 'hide'}>{post.urgency}</p>
+                  </div>
+                );
+              })
+            )}
           </div>
-
         </div>
         <div className='profiles-section'>
           <h1>All Profiles</h1>
           <div className='profiles-container'>
-            {profiles.map((profile) => {
-              return (
-                <div
-                  key={profile._id}
-                  className='each-profile'
-                  onClick={() => navigateToProfile(profile._id)}
-                >
-                  <p className='profile-name'>{`${profile.firstName} ${profile.surname}`}</p>
-                  <p className='profile-rating'>
-                    Average Rating: <span>{profile.averageRating}</span>
-                  </p>
-                  <p className='profile-city'>
-                    City: <span>{profile.city}</span>
-                  </p>
-                  <p className='profile-services'>
-                    Services: <span>{profile.services}</span>
-                  </p>
-                </div>
-              );
-            })}
+            {profiles === null ? (
+              <p>Loading profiles...</p>
+            ) : profiles.length === 0 ? (
+              <p>Profile not found</p>
+            ) : (
+              profiles.map((profile) => {
+                return (
+                  <div
+                    key={profile._id}
+                    className='each-profile'
+                    onClick={() => navigateToProfile(profile._id)}
+                  >
+                    <div className='profile-pic-and-name'>
+                      <img
+                        className='profile-pic'
+                        src={profile.imageProfile}
+                        alt='profile picture'
+                        width='70px'
+                        height='70px'
+                      />
+                      <p className='profile-name'>
+                        <span>{profile.firstName}</span>
+                        <span>{profile.surname}</span>
+                      </p>
+                    </div>
+                    <p className='profile-rating'>
+                      Average Rating: <span>{profile.averageRating}</span>
+                    </p>
+                    <p className='profile-city'>
+                      City: <span>{profile.city}</span>
+                    </p>
+                    <p className='profile-services'>
+                      Services: <span>{profile.services}</span>
+                    </p>
+                  </div>
+                );
+              })
+            )}
           </div>
         </div>
       </div>
