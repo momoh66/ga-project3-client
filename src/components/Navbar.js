@@ -105,7 +105,7 @@ const Navbar = () => {
           className={onPage === '/profiles' ? 'sidebar-item on-page' : 'sidebar-item'}
         >
           <FontAwesomeIcon icon={faPeopleRoof} />
-          Feed/Profiles
+          Feed / Profiles
         </Link>
         <Link
           to={'/neighbourhoods'}
