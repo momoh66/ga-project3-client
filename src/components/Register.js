@@ -12,13 +12,18 @@ const Register = () => {
     passwordConfirmation: '',
     services: '',
     city: '',
-    region: '',
+    region: 'North',
     imageProfile: '',
     imageService: ''
   });
 
   function handleChange(event) {
+    console.log('event.target.name', event.target.name);
+    console.log('event.target.value', event.target.value);
     setUser({ ...user, [event.target.name]: event.target.value });
+    if (event.target.name === 'region') {
+      console.log('region selected:', event.target.value);
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -152,8 +157,6 @@ const Register = () => {
                   </label>
                   <select
                     className='register-input'
-                    type='text'
-                    placeholder='North/West/Central...'
                     name='region'
                     id='region'
                     onChange={handleChange}

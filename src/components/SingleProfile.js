@@ -150,7 +150,7 @@ const SingleProfile = ({ extractDate, extractTime }) => {
                   <span>Location:</span>&nbsp;
                   {`${profile.region} ${profile.city}`}
                 </p>
-                <p>
+                <p className={profile.isHelper ? 'bio-text' : 'hide'}>
                   <span>Bio:</span>&nbsp;
                   {profile.bio}
                 </p>
