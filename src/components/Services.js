@@ -19,11 +19,18 @@ const Services = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     const clickedButton = e.target.innerHTML;
-    const searchforProfiles = await searchProfile(clickedButton);
-    const id = searchforProfiles.body[0]._id;
+    const returnedProfiles = await searchProfile(clickedButton);
+    console.log('returnedProfiles', returnedProfiles);
+    const id = returnedProfiles.body[0]._id;
     navigate(`/services/profiles`, { state: clickedButton });
-    console.log('searchProfile id', searchforProfiles.body[0]._id);
+    console.log('searchProfile id', returnedProfiles.body[0]._id);
   };
+
+  function getUniqueServices() {
+    const uniqueArray = [...new Set(profiles.map((profile) => profile.services[0]))];
+    console.log('uniqueArray', uniqueArray);
+    return uniqueArray;
+  }
 
   return (
     <section className='services-section'>
@@ -42,10 +49,10 @@ const Services = () => {
           {!profiles ? (
             <p>Loading Services...</p>
           ) : (
-            profiles.map((profile) => (
-              <div className='service-border'>
-                <div key={profile._id} className='service-card' onClick={handleClick}>
-                  {profile.services}
+            getUniqueServices().map((service) => (
+              <div key={service} className='service-border'>
+                <div key={service} className='service-card' onClick={handleClick}>
+                  {service}
                 </div>
               </div>
             ))

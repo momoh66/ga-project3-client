@@ -1,5 +1,8 @@
 // https://images.unsplash.com/photo-1537111355507-1f73d87ecadf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80
 
+// ! --------------------------------------------------------- ! //
+// ! ---------------------- Services.js ---------------------- ! //
+// ! --------------------------------------------------------- ! //
 
 .services-section {
   display: flex;
@@ -106,5 +109,62 @@
 
 
 
+// ! ---------------------------------------------------------- ! //
+// ! ------------------- ServiceProfiles.js ------------------- ! //
+// ! ---------------------------------------------------------- ! //
 
+.heading-service {
+  text-transform: capitalize;
+  color: var(--theme-blue);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
 
+.filtered-profile-card {
+  // border: 2px solid blue;
+  box-shadow: 0px 0px 15px 2px #B8B8B8;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 20px;
+  border: 5px solid #fff;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: azure;
+    border: 5px solid var(--theme-purple);
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
+  img {
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center top;
+    width: 175px;
+    height: 175px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  p:first-of-type {
+    font-size: 22px;
+    margin: 30px 0 10px 0;
+    letter-spacing: 1px;
+  }
+
+  span {
+    color: #59ad59;
+  }
+
+  
+}
+
+.profile-pic-filtered {
+  width: 175px;
+}
