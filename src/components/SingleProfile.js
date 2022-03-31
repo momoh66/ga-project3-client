@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { getProfileById } from '../api/profiles';
-import profilePic from '../images/bitmoji.png';
+// import profilePic from '../images/bitmoji.png';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareH } from '@fortawesome/free-solid-svg-icons';
@@ -73,7 +73,12 @@ const SingleProfile = ({ extractDate, extractTime }) => {
           <div className='singleProfile-container'>
             <div className='user-profile'>
               <div className='profile-picture-container'>
-                <img className='profile-picture' src={profilePic} alt='profile picture' />
+                <img
+                  className='profile-picture'
+                  // src={profilePic}
+                  src={profile.imageProfile}
+                  alt='profile picture'
+                />
                 <p className='stars'>{getStars(profile.averageRating)}</p>
               </div>
               <div className='profile-info'>
