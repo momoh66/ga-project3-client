@@ -82,11 +82,21 @@ const Profiles = ({ extractDate, extractTime }) => {
               return (
                 <div key={post._id} className='each-post'>
                   <p className='post-creator'>{`${post.createdByName} ${post.createdBySurname}`}</p>
-                  <p className='post-datestamp'>{extractDate(post.createdAt)}</p>
-                  <p className='post-timestamp'>{extractTime(post.createdAt)}</p>
-                  <p className='post-text'>{post.text}</p>
+                  <p className='post-datetime'>{`${extractTime(post.createdAt)}, ${extractDate(
+                    post.createdAt
+                  )}`}</p>
                   <p className='post-service'>{post.service}</p>
-                  <p className='post-urgency'>{post.urgency}</p>
+                  <p className='post-text-wrapper'>
+                    <span>&ldquo;</span>
+                    <br />
+                    <p className='post-text'>&emsp;&emsp;&emsp;{post.text}</p>
+                    <br />
+                    <span>&rdquo;</span>
+                  </p>
+                  <p className={post.urgency ? 'post-urgency' : 'hide'}>
+                    {/* <span>Urgency:</span>&nbsp; */}
+                    {post.urgency}
+                  </p>
                 </div>
               );
             })}
@@ -103,9 +113,16 @@ const Profiles = ({ extractDate, extractTime }) => {
                   className='each-profile'
                   onClick={() => navigateToProfile(profile._id)}
                 >
-                  <p>{`${profile.firstName} ${profile.surname}`}</p>{' '}
-                  <p>{`Average Rating: ${profile.averageRating}`}</p>{' '}
-                  <p>{`City: ${profile.city}`}</p> <p>{`Services: ${profile.services}`}</p>
+                  <p className='profile-name'>{`${profile.firstName} ${profile.surname}`}</p>
+                  <p className='profile-rating'>
+                    Average Rating: <span>{profile.averageRating}</span>
+                  </p>
+                  <p className='profile-city'>
+                    City: <span>{profile.city}</span>
+                  </p>
+                  <p className='profile-services'>
+                    Services: <span>{profile.services}</span>
+                  </p>
                 </div>
               );
             })}

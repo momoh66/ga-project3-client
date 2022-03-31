@@ -87,16 +87,16 @@ header {
   }
 }
 .xMark {
-  margin-right: 15px;
-  width: 30px;
-  height: 30px;
-  font-size: 35px;
-  text-align: center;
-  color: rgb(245, 239, 239, 1);
+  margin-right: 9px;
+  display: flex;
+  font-size: 38px;
+  color: #f5efef;
   background: linear-gradient(90deg, var(--theme-purple), var(--theme-blue));
   padding-bottom: 8px;
   border-radius: 3px;
+  padding: 0 9px;
 }
+
 .active {
   transform: translateX(0);
   opacity: 0.99;

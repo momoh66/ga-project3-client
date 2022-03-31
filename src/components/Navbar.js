@@ -12,7 +12,6 @@ import {
   faUserLock,
   faChildReaching,
   faSignOut,
-  faCross,
   faXmark,
   faCircleUser
 } from '@fortawesome/free-solid-svg-icons';
@@ -55,9 +54,11 @@ const Navbar = () => {
         </Link>
 
         <div className='navbar-right'>
-          <Link to={`/single-profile/${getLoggedInUserId()}`} className='navbar-item user-icon'>
-            <FontAwesomeIcon icon={faCircleUser} />
-          </Link>
+          {getLoggedInUserId() && (
+            <Link to={`/single-profile/${getLoggedInUserId()}`} className='navbar-item user-icon'>
+              <FontAwesomeIcon icon={faCircleUser} />
+            </Link>
+          )}
           {!sideBar ? (
             <Link to={'#'} className='navbar-item bars' onClick={toggleMenu}>
               <div className='bar bar1'></div>
