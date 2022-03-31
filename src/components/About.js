@@ -61,7 +61,7 @@ const About = () => {
                       <a href='#'>LinkedIn</a>
                     </div>
                   </div>
-                  <p>Relationship goals: Simon Clemson and Milo Bedini</p>
+                  <p>Relationship goals: Simon Clemson and Milo Bedini.</p>
                 </div>
               </div>
             </div>
