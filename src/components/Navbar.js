@@ -12,6 +12,8 @@ import {
   faUserLock,
   faChildReaching,
   faSignOut,
+  faCross,
+  faXmark,
   faCircleUser
 } from '@fortawesome/free-solid-svg-icons';
 import treeImg from '../images/tree.png';
@@ -40,6 +42,7 @@ const Navbar = () => {
   }, [location]);
 
   console.log('onPage', onPage);
+  console.log('loggedInUserId', getLoggedInUserId());
 
   const toggleMenu = () => setSideBar(!sideBar);
 
@@ -50,15 +53,22 @@ const Navbar = () => {
           <img src={treeImg} alt='tree logo' className='treelogo' />
           Neighbour Needs
         </Link>
+
         <div className='navbar-right'>
           <Link to={`/single-profile/${getLoggedInUserId()}`} className='navbar-item user-icon'>
             <FontAwesomeIcon icon={faCircleUser} />
           </Link>
-          <Link to={'#'} className='navbar-item bars' onClick={toggleMenu}>
-            <div className='bar bar1'></div>
-            <div className='bar bar2'></div>
-            <div className='bar bar3'></div>
-          </Link>
+          {!sideBar ? (
+            <Link to={'#'} className='navbar-item bars' onClick={toggleMenu}>
+              <div className='bar bar1'></div>
+              <div className='bar bar2'></div>
+              <div className='bar bar3'></div>
+            </Link>
+          ) : (
+            <Link to={'#'} className='navbar-item xMark' onClick={toggleMenu}>
+              <FontAwesomeIcon icon={faXmark} />
+            </Link>
+          )}
         </div>
       </div>
       <nav className={sideBar ? 'sidebar active' : 'sidebar'} onClick={toggleMenu}>

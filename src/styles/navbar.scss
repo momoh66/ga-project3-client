@@ -3,6 +3,7 @@ header {
   position: fixed;
   width: 100vw;
   opacity: 0.95;
+  z-index: 1;
 }
 
 .navbar {
@@ -28,7 +29,8 @@ header {
   }
 }
 
-.navbar-item, .sidebar-item {
+.navbar-item,
+.sidebar-item {
   text-decoration: none;
   color: #fff;
   font-weight: 200;
@@ -63,6 +65,7 @@ header {
   height: 5px;
   border-radius: 10px;
   margin: 2px;
+  margin-right: 15px;
   background: linear-gradient(90deg, var(--theme-purple), var(--theme-blue));
 }
 
@@ -78,17 +81,27 @@ header {
   right: 0;
   transform: translateX(100%);
   opacity: 0;
-  
+
   & > .navbar-item {
     color: #fff;
   }
 }
-
+.xMark {
+  margin-right: 15px;
+  width: 30px;
+  height: 30px;
+  font-size: 35px;
+  text-align: center;
+  color: rgb(245, 239, 239, 1);
+  background: linear-gradient(90deg, var(--theme-purple), var(--theme-blue));
+  padding-bottom: 8px;
+  border-radius: 3px;
+}
 .active {
   transform: translateX(0);
   opacity: 0.99;
+  z-index: 1;
 }
-
 
 .sidebar-item {
   padding: 17px 20px;
@@ -96,14 +109,14 @@ header {
   text-transform: capitalize;
   display: flex;
   align-items: center;
-  
+
   // fa-icons:
   & :nth-child(1) {
     margin-right: 14px;
     width: 35px;
     padding: 5px;
     border-radius: 10px;
-    background: linear-gradient(90deg, var(--theme-purple), var(--theme-blue));    
+    background: linear-gradient(90deg, var(--theme-purple), var(--theme-blue));
   }
 }
 
@@ -112,6 +125,6 @@ header {
   // text-transform: uppercase;
 
   & :nth-child(1) {
-    background: none;    
+    background: none;
   }
 }

@@ -20,7 +20,7 @@ export const loginUser = async (credentials) => {
 };
 
 export const registerUser = async(user) => {
-  console.log('user', user);
+  // console.log('user', user);
   const options = {
     method: 'POST',
     url: '/api/register',
