@@ -82,7 +82,20 @@ const SingleProfile = ({ extractDate, extractTime }) => {
           <div className='singleProfile-container'>
             <div className='user-profile'>
               <div className='profile-picture-container'>
-                <img className='profile-picture' src={profile.imageProfile} alt='profile picture' />
+                <img
+                  className='profile-picture'
+                  src={
+                    profile.imageProfile
+                      ? profile.imageProfile
+                      : 'https://images.unsplash.com/photo-1530842128367-9e448d986a75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80'
+                  }
+                  alt='profile picture'
+                  onError={({ currentTarget }) => {
+                    currentTarget.onerror = null; // prevents looping
+                    currentTarget.src =
+                      'https://images.unsplash.com/photo-1530842128367-9e448d986a75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80';
+                  }}
+                />
                 <p className='stars'>{getStars(profile.averageRating)}</p>
               </div>
               <div className='profile-info'>
