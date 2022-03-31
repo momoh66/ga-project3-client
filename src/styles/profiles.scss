@@ -3,6 +3,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-size: cover;
+  height: 100%;
   background-position: center;
   display: flex;
   flex-direction: column;
@@ -54,7 +55,7 @@
 .feed-section, .profiles-section {
   background-color: rgba(250, 250, 250, 0.95);
   // border: 2px solid orange;
-  // height: 95%;
+  height: 95%;
   width: 80%;
   display: flex;
   flex-direction: column;
@@ -117,6 +118,7 @@
       padding: 10px 20px;
       margin: 10px;
       transition: 0.3s ease-in-out;
+      height: fit-content;
 
       span {
         color: #000;
@@ -129,6 +131,8 @@
 
         .profile-pic {
           border-radius: 50px;
+          object-fit: cover;
+          object-position: center top;
         }
 
         .profile-name {
@@ -254,4 +258,5 @@ h1 {
 
 #profiles-footer {
   margin-top: 15px;
+  margin-bottom: 15px;
 }

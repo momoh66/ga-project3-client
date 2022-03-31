@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react';
 import { getAllPosts } from '../api/posts';
 import { getAllProfiles } from '../api/profiles';
 import { searchProfile } from '../api/profiles';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 const Profiles = ({ extractDate, extractTime }) => {
@@ -54,9 +52,6 @@ const Profiles = ({ extractDate, extractTime }) => {
           onChange={handleSearchChange}
           value={searchInput}
         />
-        {/* <button type='submit'>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </button> */}
       </div>
       <div className='feed-and-profiles-container'>
         <div className='feed-section'>
@@ -111,6 +106,11 @@ const Profiles = ({ extractDate, extractTime }) => {
                         alt='profile picture'
                         width='70px'
                         height='70px'
+                        onError={({ currentTarget }) => {
+                          currentTarget.onerror = null; // prevents looping
+                          currentTarget.src =
+                            'https://images.unsplash.com/photo-1530842128367-9e448d986a75?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80';
+                        }}
                       />
                       <p className='profile-name'>
                         <span>{profile.firstName}</span>
