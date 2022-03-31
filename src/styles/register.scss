@@ -1,11 +1,13 @@
 .register-hero {
   background-color: rgba(255, 255, 255, 0.95);
-  // padding: 60px 65px;
+  padding: 50px;
+  margin-top: 30px;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 485px;
+  // height: 485px;
+  // border: 2px solid blue;
 }
 
 .fields {
@@ -21,13 +23,13 @@
 
 input, select {
   font-family: inherit;
-  padding: 7px;
+  padding: 10px;
   border-radius: 5px;
   border: 1px solid #8c8c8c;
 }
 
 select {
-  padding: 6px;
+  padding: 9px;
   color: #8c8c8c;
 }
 
@@ -46,17 +48,13 @@ select {
 
 .unequal > .field:first-of-type {
   .register-input {
-    width: 110px;
+    width: 140px;
   }
 }
 .unequal > .field:last-of-type {
   .register-input {
-    width: 160px;
+    width: 150px;
   }
-}
-
-.register-hero {
-  padding: 30px 35px;
 }
 
 .register-form {
@@ -76,13 +74,16 @@ select {
   width: 300px;
 }
 
-
-
-
 .optional {
   color: #8c8c8c;
 }
 
 .footnote:first-of-type {
   margin-bottom: 5px;
+}
+
+#register-footer {
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
