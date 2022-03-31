@@ -16,10 +16,10 @@ const Services = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     const clickedButton = e.target.innerHTML;
-    const searchProfiles = await searchProfile(clickedButton);
-    navigate(`/single-profile/${id}`);
-    const id = searchProfiles.body[0]._id;
-    console.log('searchProfile(clickedButton)', searchProfiles.body[0]._id);
+    const searchforProfiles = await searchProfile(clickedButton);
+    const id = searchforProfiles.body[0]._id;
+    navigate(`/services/profiles`, {state: clickedButton});
+    console.log('searchProfile id', searchforProfiles.body[0]._id);
   };
 
   return (
