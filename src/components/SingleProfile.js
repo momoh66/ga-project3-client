@@ -1,16 +1,15 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { getProfileById } from '../api/profiles';
-// import profilePic from '../images/bitmoji.png';
+import { createComment, getProfileById } from '../api/profiles';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareH } from '@fortawesome/free-solid-svg-icons';
 
 const SingleProfile = ({ extractDate, extractTime }) => {
   const { id } = useParams();
-  console.log('id', id);
+  // console.log('id', id);
   const [profile, setProfile] = useState(null);
-  const [formData, setFormData] = useState({ rating: '' });
+  const [formData, setFormData] = useState({ comment: '', rating: '' });
 
   useEffect(() => {
     const getData = async () => {
@@ -21,18 +20,30 @@ const SingleProfile = ({ extractDate, extractTime }) => {
     getData();
   }, [id]);
 
-  const onChange = (e) => {
+  /** Handles Comment text and Rating changes: **/
+  const handleInputChange = (e) => {
     if (e.target.name === 'rating') {
       const inputValue = parseInt(e.target.value);
+      console.log(inputValue);
       if (inputValue > 5 || inputValue < 1) {
         return null;
       } else {
         setFormData({ ...formData, rating: inputValue });
       }
     } else {
+      // console.log(e.target.value);
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
   };
+
+  async function handleCommentSubmit(e) {
+    console.log('clicked!');
+    e.preventDefault();
+    const data = await createComment(id, { text: formData.comment, rating: formData.rating });
+    console.log('FORM DATA', data);
+    setProfile(data.savedProfile);
+    setFormData({ comment: '', rating: '' });
+  }
 
   // function extractDate(timestamp) {
   //   return timestamp.split('T')[0];
@@ -73,12 +84,7 @@ const SingleProfile = ({ extractDate, extractTime }) => {
           <div className='singleProfile-container'>
             <div className='user-profile'>
               <div className='profile-picture-container'>
-                <img
-                  className='profile-picture'
-                  // src={profilePic}
-                  src={profile.imageProfile}
-                  alt='profile picture'
-                />
+                <img className='profile-picture' src={profile.imageProfile} alt='profile picture' />
                 <p className='stars'>{getStars(profile.averageRating)}</p>
               </div>
               <div className='profile-info'>
@@ -118,14 +124,16 @@ const SingleProfile = ({ extractDate, extractTime }) => {
             <div className={profile.isHelper ? 'comments-section' : 'hide'}>
               <h3>Comments</h3>
               <div className='comment-show'>
-                <div className='leave-comment-container'>
+                <form className='leave-comment-container'>
                   <div className='leave-comment-wrapper'>
                     <label className='label' htmlFor='comment'>
                       Leave a Comment!
                     </label>
                     <textarea
-                      name='comment-box'
+                      onChange={handleInputChange}
+                      name='comment'
                       id='comment'
+                      value={formData.comment}
                       cols='25'
                       rows={profile.comments.length !== 0 ? '5' : '3'}
                     />
@@ -135,17 +143,17 @@ const SingleProfile = ({ extractDate, extractTime }) => {
                       Leave a rating (1-5)!
                     </label>
                     <input
-                      onChange={onChange}
+                      onChange={handleInputChange}
                       value={formData.rating}
                       type='number'
                       id='rating'
                       name='rating'
                     />
                   </div>
-                  <button type='submit' className='submit-comment'>
+                  <button type='submit' className='submit-comment' onClick={handleCommentSubmit}>
                     Submit
                   </button>
-                </div>
+                </form>
                 <div className='comments-container'>
                   {profile.comments.length === 0 ? (
                     <p>No comments yet. Be the first to leave one!</p>
@@ -157,8 +165,9 @@ const SingleProfile = ({ extractDate, extractTime }) => {
                           <p className='commentRating'>{comment.rating}</p>
                           <p className='commentRating'>{`${comment.createdByName} ${comment.createdBySurname}`}</p>
                           <div className='comment-datetime'>
-                            <p className='commentRating'>{extractDate(comment.createdAt)}</p>
-                            <p className='commentRating'>{extractTime(comment.createdAt)}</p>
+                            <p className='commentRating'>{comment.createdAt}</p>
+                            {/* <p className='commentRating'>{extractDate(comment.createdAt)}</p> */}
+                            {/* <p className='commentRating'>{extractTime(comment.createdAt)}</p> */}
                           </div>
                         </div>
                       ))}
