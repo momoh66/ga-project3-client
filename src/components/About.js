@@ -68,8 +68,8 @@ const About = () => {
             <div className='creator-border'>
               <div className='creator mo'>
                 <img
-                  className='creator-img'
-                  src='https://ca.slack-edge.com/T0351JZQ0-U02STMWJE8K-0f48c0c833d1-512'
+                  className='creator-img creator-img-mo'
+                  src='https://ca.slack-edge.com/T0351JZQ0-U02QAC7RXPV-d3fbfae64d52-512'
                   alt='mo picture'
                 />
                 <div className='creator-text'>
