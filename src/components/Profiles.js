@@ -80,7 +80,7 @@ const Profiles = () => {
           <div className="profile-section">
             <h1>Profile Section</h1>
             <div className="profile-container">
-              {profiles.map((profiles) => {
+              {/* {profiles.map((profiles) => {
                 return (
                   <div key={profiles._id} className="each-profile">
                     <p>{`${profiles.firstName} ${profiles.surname}`}</p>{' '}
@@ -89,7 +89,7 @@ const Profiles = () => {
                     <p>{`Services: ${profiles.services}`}</p>
                   </div>
                 );
-              })}
+              })} */}
             </div>
           </div>
         </div>

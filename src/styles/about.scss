@@ -107,3 +107,15 @@
 .mo {
   margin: 7px;
 }
+
+.users-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.user-img {
+  display: flex;
+  width: 50px;
+  margin: 10px;
+}
