@@ -233,6 +233,23 @@
   }
 }
 
+.submit-comment-disabled {
+  width: 250px;
+  text-transform: capitalize;
+  background-color: #bdbdbd;
+  color: #fff;
+  border: 2px solid var(--theme-blue);
+  border-radius: 5px;
+  width: 270px;
+  padding: 10px;
+  font-family: inherit;
+  text-transform: capitalize;
+
+  &:hover {
+    cursor: not-allowed;
+  }
+}
+
 .comments-container {
   // border: 2px solid blue;
   display: flex;
@@ -263,9 +280,24 @@
   p {
     margin: 0;
   }
+  .name-and-xMark {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  .commentName {
-    color: #18378a;
+    .commentName {
+      color: #18378a;
+    }
+    .delete-comment {
+      color: #b90000;
+      margin-top: -7px;
+      transition: 0.15s ease-in-out;
+
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.4);
+      }
+    }
   }
   .commentDateTime {
     color: #8c8c8c;

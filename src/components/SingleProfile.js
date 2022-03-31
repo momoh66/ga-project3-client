@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { createComment, getProfileById } from '../api/profiles';
+import { createComment, getProfileById, deleteComment } from '../api/profiles';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSquareH } from '@fortawesome/free-solid-svg-icons';
+import { faSquareH, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { getLoggedInUserId } from '../lib/auth';
 
 const SingleProfile = ({ extractDate, extractTime }) => {
   const { id } = useParams();
@@ -45,13 +46,10 @@ const SingleProfile = ({ extractDate, extractTime }) => {
     setFormData({ comment: '', rating: '' });
   }
 
-  // function extractDate(timestamp) {
-  //   return timestamp.split('T')[0];
-  // }
-
-  // function extractTime(timestamp) {
-  //   return timestamp.split('T')[1].split('.')[0];
-  // }
+  async function handleDeleteComment(commentId) {
+    const data = await deleteComment(id, commentId);
+    setProfile(data.body);
+  }
 
   function getStars(rating) {
     const numberOfStars = Math.round(Number(rating));
@@ -150,9 +148,12 @@ const SingleProfile = ({ extractDate, extractTime }) => {
                       name='rating'
                     />
                   </div>
-                  <button type='submit' className='submit-comment' onClick={handleCommentSubmit}>
-                    Submit
-                  </button>
+                  <input
+                    type='submit'
+                    className={getLoggedInUserId() ? 'submit-comment' : 'submit-comment-disabled'}
+                    onClick={handleCommentSubmit}
+                    value={getLoggedInUserId() ? 'Submit' : 'You must be logged in to comment'}
+                  />
                 </div>
                 <div className='comments-container'>
                   {profile.comments.length === 0 ? (
@@ -161,7 +162,16 @@ const SingleProfile = ({ extractDate, extractTime }) => {
                     // <div className='comments-container'>
                     profile.comments.map((comment) => (
                       <div key={comment._id} className='comment'>
-                        <p className='commentName'>{`${comment.createdByName} ${comment.createdBySurname}`}</p>
+                        <div className='name-and-xMark'>
+                          <p className='commentName'>{`${comment.createdByName} ${comment.createdBySurname}`}</p>
+                          {getLoggedInUserId() === comment.createdById && (
+                            <FontAwesomeIcon
+                              className='delete-comment'
+                              icon={faXmark}
+                              onClick={() => handleDeleteComment(comment._id)}
+                            />
+                          )}
+                        </div>
                         <p className='commentDateTime'>{`${extractTime(
                           comment.createdAt
                         )}, ${extractDate(comment.createdAt)}`}</p>
