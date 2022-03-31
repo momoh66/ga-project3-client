@@ -1,7 +1,3 @@
-.register-section {
-  height: 200px;
-}
-
 .register-hero {
   background-color: rgba(255, 255, 255, 0.95);
   // padding: 60px 65px;
@@ -23,8 +19,16 @@
 
 }
 
-input {
+input, select {
   font-family: inherit;
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid #8c8c8c;
+}
+
+select {
+  padding: 6px;
+  color: #8c8c8c;
 }
 
 .double-field {

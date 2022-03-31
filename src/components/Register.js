@@ -151,26 +151,26 @@ const Register = () => {
                     Region*
                   </label>
                   <select
-                    className="register-input"
-                    type="text"
-                    placeholder="North/West/Central..."
-                    name="region"
-                    id="region"
+                    className='register-input'
+                    type='text'
+                    placeholder='North/West/Central...'
+                    name='region'
+                    id='region'
                     onChange={handleChange}
                     value={user.region}
-                    autoComplete="off"
+                    autoComplete='off'
                     required
                   >
-                    <option value="north" title="North">
+                    <option value='north' title='North'>
                       North
                     </option>
-                    <option value="east" title="East">
+                    <option value='east' title='East'>
                       East
                     </option>
-                    <option value="south" title="South">
+                    <option value='south' title='South'>
                       South
                     </option>
-                    <option value="west" title="West">
+                    <option value='west' title='West'>
                       West
                     </option>
                   </select>
