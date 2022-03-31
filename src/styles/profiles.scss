@@ -207,13 +207,11 @@
       font-size: 60px;
       display: flex;
       font-family: 'Secular One', sans-serif;
-      // margin-bottom: -10px;
 
       &:last-child {
         text-align: right;
         align-self: flex-end;
         margin-top: -30px;
-        // font-size: 30px;
       }
     }
     .post-text {
@@ -226,9 +224,6 @@
     // border: 2px solid blue;
     margin-top: -35px;    
     color: #e03fa3;
-    // span {
-    //   color: #e03fa3;
-    // }
   }
   
 }
@@ -237,4 +232,9 @@ h1 {
   text-align: center;
   font-size: 30px;
   font-weight: 400;
+}
+
+
+#profiles-footer {
+  margin-top: 15px;
 }

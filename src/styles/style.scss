@@ -25,6 +25,7 @@ section {
 // Login & Register page (very similar design)
 .form-section {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 0;
@@ -87,4 +88,9 @@ form {
       font-weight: 400;
     }
   }
+}
+
+#login-register-footer {
+  margin-top: 140px;
+  margin-bottom: -120px;
 }

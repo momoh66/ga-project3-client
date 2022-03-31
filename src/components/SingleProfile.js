@@ -179,6 +179,9 @@ const SingleProfile = ({ extractDate, extractTime }) => {
           </div>
         )}
       </div>
+      <footer id='single-profile-footer'>
+        Created at GA SEI62 &#126; Copyright &copy; 2022 A. Borges, E. Daykin, M. Mohamed
+      </footer>
     </section>
   );
 };
