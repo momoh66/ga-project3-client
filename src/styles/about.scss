@@ -112,10 +112,34 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+
+  .user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .user-text {
+      text-align: center;
+    }
+    h5 {
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+
+      .link {
+        margin: 5px 2px 0 2px;
+      }
+    }
+  }
 }
 
 .user-img {
   display: flex;
   width: 50px;
   margin: 10px;
+  border-radius: 3px;
 }
