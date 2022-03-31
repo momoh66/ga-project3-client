@@ -6,18 +6,26 @@
   background-size: cover;
   background-position: center;
   display: flex;
+  // min-height: 100%;
+  height: 100%;
+  // min-height: 100%;
+  min-height: calc(100vh - var(--nav-height));
   flex-direction: column;
   justify-content: center;
   align-items: center;
   // margin: 20px;
+  // height: unset;
 }
 
 .singleProfile-hero {
   background-color: rgba(255, 255, 255, 0.95);
   width: 80%;
-  height: 80%;
+  // height: unset;
+  // min-height: 90%;
+  // height: 800px;
   border-radius: 5px;
   padding: 30px 50px 60px 50px;
+  margin: 50px;
   // padding-top: 30px;
 }
 
@@ -58,8 +66,12 @@
 .profile-picture {
   background-color: #fff;
   border-radius: 50px;
-  width: 250px;
   display: flex;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+  object-position: center top;
+  background-position: center top;
   // padding: 30px;
 }
 
@@ -317,7 +329,8 @@
 
 #single-profile-footer {
   // position: absolute;
-  margin-top: -23px;
+  margin-top: -15px;
+  margin-bottom: 10px;
   color: #d4d4d4;
 }
 
