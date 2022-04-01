@@ -15,7 +15,7 @@ const SingleProfile = ({ extractDate, extractTime }) => {
   useEffect(() => {
     const getData = async () => {
       const userProfile = await getProfileById(id);
-      console.log('data.body:', userProfile.body);
+      // console.log('data.body:', userProfile.body);
       setProfile(userProfile.body);
     };
     getData();
@@ -41,7 +41,7 @@ const SingleProfile = ({ extractDate, extractTime }) => {
     console.log('clicked!');
     e.preventDefault();
     const data = await createComment(id, { text: formData.comment, rating: formData.rating });
-    console.log('FORM DATA', data);
+    // console.log('FORM DATA', data);
     setProfile(data.savedProfile);
     setFormData({ comment: '', rating: '' });
   }

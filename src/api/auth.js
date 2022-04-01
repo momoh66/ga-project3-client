@@ -19,15 +19,15 @@ export const loginUser = async (credentials) => {
   return data.message;
 };
 
-export const registerUser = async(user) => {
+export const registerUser = async (user) => {
   // console.log('user', user);
   const options = {
     method: 'POST',
     url: '/api/register',
-    data: user,
+    data: user
   };
 
   const { data } = await axios.request(options);
 
   return data;
-}
+};
