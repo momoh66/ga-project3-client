@@ -33,7 +33,7 @@ const ServiceProfiles = () => {
           Profiles Offering <span className='heading-service'>{state}</span>
         </h1>
         <p className='instructions'>
-          Choose from one of the profiles below to ensure you task gets carried out.
+          Choose from one of the profiles below to ensure your task gets carried out.
         </p>
         <div className='services-container'>
           {!profiles ? (
