@@ -73,8 +73,32 @@ const SingleProfile = ({ extractDate, extractTime }) => {
     console.log('helper button:', e.target.value);
   }
 
+  // function singleProfileBackgroundStyle(image) {
+  //   return {
+  //     backgroundImage: `url(${image})`,
+  //     backgroundRepeat: 'no-repeat',
+  //     backgroundSize: 'cover',
+  //     backgroundPosition: 'center',
+  //     display: 'flex',
+  //     height: '100%',
+  //     minHeight: 'calc(100vh - var(--nav-height))',
+  //     flexDirection: 'column',
+  //     justifyContent: 'center',
+  //     alignItems: 'center'
+  //   };
+  // }
+
   return (
-    <section className='singleProfile-section'>
+    <section
+      className='singleProfile-section'
+      // style={
+      //   profile && profile.imageService
+      //     ? singleProfileBackgroundStyle(profile.imageService)
+      //     : singleProfileBackgroundStyle(
+      //         'https://images.unsplash.com/photo-1503785640985-f62e3aeee448?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1174&q=80'
+      //       )
+      // }
+    >
       <div className='singleProfile-hero'>
         {!profile ? (
           <p>Loading profile...</p>
@@ -126,7 +150,7 @@ const SingleProfile = ({ extractDate, extractTime }) => {
                   <span>Location:</span>&nbsp;
                   {`${profile.region} ${profile.city}`}
                 </p>
-                <p>
+                <p className={profile.isHelper ? 'bio-text' : 'hide'}>
                   <span>Bio:</span>&nbsp;
                   {profile.bio}
                 </p>

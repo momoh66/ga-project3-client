@@ -75,9 +75,8 @@ const Login = () => {
           </p>
         </form>
       </div>
-      <footer id="login-register-footer">
-        Created at GA SEI62 &#126; Copyright &copy; 2022 A. Borges, E. Daykin,
-        M. Mohamed
+      <footer id='login-footer'>
+        Created at GA SEI62 &#126; Copyright &copy; 2022 A. Borges, E. Daykin, M. Mohamed
       </footer>
     </section>
   );

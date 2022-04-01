@@ -15,13 +15,18 @@ const Register = () => {
     passwordConfirmation: '',
     services: '',
     city: '',
-    region: '',
+    region: 'North',
     imageProfile: '',
     imageService: '',
   });
 
   function handleChange(event) {
+    console.log('event.target.name', event.target.name);
+    console.log('event.target.value', event.target.value);
     setUser({ ...user, [event.target.name]: event.target.value });
+    if (event.target.name === 'region') {
+      console.log('region selected:', event.target.value);
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -125,10 +130,10 @@ const Register = () => {
                 />
               </div>
             </div>
-            <div className="fields-right">
-              <div className="field first">
-                <label htmlFor="services" className="register-label optional">
-                  Services (if you'd like to help)
+            <div className='fields-right'>
+              <div className='field first'>
+                <label htmlFor='services' className='register-label optional'>
+                  Services (if you'd like to help others)
                 </label>
                 <input
                   className="register-input"
@@ -163,25 +168,24 @@ const Register = () => {
                     Region*
                   </label>
                   <select
-                    className="register-input"
-                    type="text"
-                    name="region"
-                    id="region"
+                    className='register-input'
+                    name='region'
+                    id='region'
                     onChange={handleChange}
-                    value={user.region.value}
-                    autoComplete="off"
+                    value={user.region}
+                    autoComplete='off'
                     required
                   >
-                    <option value="north" title="North">
+                    <option value='north' title='North'>
                       North
                     </option>
-                    <option value="east" title="East">
+                    <option value='east' title='East'>
                       East
                     </option>
-                    <option value="south" title="South">
+                    <option value='south' title='South'>
                       South
                     </option>
-                    <option value="west" title="West">
+                    <option value='west' title='West'>
                       West
                     </option>
                   </select>
@@ -238,9 +242,8 @@ const Register = () => {
           </p>
         </form>
       </div>
-      <footer id="login-register-footer">
-        Created at GA SEI62 &#126; Copyright &copy; 2022 A. Borges, E. Daykin,
-        M. Mohamed
+      <footer id='register-footer'>
+        Created at GA SEI62 &#126; Copyright &copy; 2022 A. Borges, E. Daykin, M. Mohamed
       </footer>
     </section>
   );

@@ -9,6 +9,7 @@
   flex-direction: column;
 }
 
+
 .search-wrapper {
   display: flex;
   align-items: center;
@@ -87,6 +88,206 @@
   }
 }
 
+.each-post {
+  // border: 2px solid green;
+  box-shadow: 0px 0px 15px 2px #B8B8B8;
+  background-color: #fff;
+  padding: 15px 17px;
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  border-radius: 5px;
+  max-width: 300px;
+
+  // first post will have reduced margin top
+  &:first-of-type {
+    margin-top: 5px;
+  }
+
+  // last post will have reduced margin bottom
+  &:last-of-type {
+    margin-bottom: 5px;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .post-creator {
+    color: #18378a;
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .post-datetime {
+    font-size: 13px;
+    margin-left: 15px;
+    margin-top: 5px;
+    color: #8c8c8c;
+    letter-spacing: 1px;
+  }
+
+  .post-service {
+    border-radius: 5px;
+    box-shadow: inset -1px -1px 20px 4px rgba(107, 35, 207, 0.27);
+    display: flex;
+    width: fit-content;
+    text-align: center;
+    padding: 10px;
+    margin-top: 15px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+  }
+
+  .post-text-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    .quotes {
+      // border: 2px solid blue;
+      font-size: 60px;
+      display: flex;
+      font-family: 'Secular One', sans-serif;
+
+      &:last-child {
+        text-align: right;
+        align-self: flex-end;
+        margin-top: -30px;
+      }
+    }
+
+    .post-text {
+      // border: 2px solid pink;
+      margin-top: -68px;
+    }
+  }
+
+  .post-urgency {
+    // border: 2px solid blue;
+    margin-top: -35px;
+    color: #e03fa3;
+  }
+}
+
+.add-post-button {
+  border: 2px solid var(--theme-purple);
+  margin-bottom: 25px;
+  padding: 10px 30px;
+  border-radius: 20px;
+  font-family: inherit;
+  letter-spacing: 1px;
+  font-size: 15px;
+  // background-color: linear-gradient(to bottom, var(--theme-blue), #dff4ff);
+  background-color: #fff;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #6b23cfce;
+    border: 2px solid var(--theme-blue);
+    color: #fff;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+
+.add-post-window {
+  background-color: #fff;
+  // border: 3px solid red;
+  border-radius: 20px;
+  box-shadow: 0px 0px 60px 20px #474747;
+  padding: 40px 70px;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+
+  h1 {
+    margin: 0;
+    margin-bottom: 10px;
+    color: var(--theme-blue);
+    text-transform: capitalize;
+  }  
+}
+
+.new-post-label {
+  margin-bottom: 5px;
+  color: var(--theme-purple);
+  // text-transform: uppercase;
+}
+
+.new-post-input {
+  border: 1px solid #8c8c8c;
+  border-radius: 5px;
+}
+.new-post-input:nth-of-type(1) {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: inherit;
+}
+
+.submit-new-post {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 3px solid var(--theme-purple);
+  font-family: inherit;
+  font-size: 15px;
+  text-transform: uppercase;
+  background-color: #fff;
+  width: 150px;
+  align-self: center;
+
+  &:hover {
+    background-color: var(--theme-blue);
+    cursor: pointer;
+    font-weight: 500;
+  }
+}
+
+.submit-new-post-disallowed {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 3px solid var(--theme-purple);
+  font-family: inherit;
+  font-size: 15px;
+  text-transform: uppercase;
+  background-color: #b4b4b4;
+  color: #fff;
+  width: 150px;
+  align-self: center;
+  
+  &:hover {
+    // background-color: var(--theme-blue);
+    cursor: not-allowed;
+    // font-weight: 500;
+  }
+}
+
+.close-new-post {
+  position: absolute;
+  top: 3%;
+  right: 4%;
+  color: #b90000;
+  font-size: 20px;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.5);
+    cursor: pointer;
+  }
+}
+
+
+
+
+
 .profiles-section {
   width: 56%;
   
@@ -153,7 +354,7 @@
         background-color: azure;
         transform: scale(1.1);
         cursor: pointer;
-        border: 3px solid var(--theme-purple)
+        border: 3px solid var(--theme-purple);
       }
 
       .profile-services {
@@ -163,91 +364,6 @@
   }
 }
 
-.each-post {
-  // border: 2px solid green;
-  box-shadow: 0px 0px 15px 2px #B8B8B8;
-  background-color: #fff;
-  padding: 15px 17px;
-  display: flex;
-  flex-direction: column;
-  margin: 15px;
-  border-radius: 5px;
-  max-width: 300px;
-
-  // first post will have reduced margin top
-  &:first-of-type {
-    margin-top: 5px; 
-  }
-  // last post will have reduced margin bottom
-  &:last-of-type {
-    margin-bottom: 5px; 
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .post-creator {
-    // color: var(--theme-blue)
-    color: #18378a;
-    font-size: 17px;
-    font-weight: 500;
-  }
-
-  .post-datetime {
-    font-size: 13px;
-    margin-left: 15px;
-    margin-top: 5px;
-    color:#8c8c8c;
-    letter-spacing: 1px;
-  }
-
-  .post-service {
-    // border: 2px solid grey;
-    border-radius: 5px;
-    box-shadow: inset -1px -1px 20px 4px rgba(107,35,207,0.27);
-    display: flex;
-    width: fit-content;
-    text-align: center;
-    // width: fit-content;
-    // justify-self: center;
-    padding: 10px;
-    margin-top: 15px;
-    text-transform: capitalize;
-    letter-spacing: 1px;;
-    // justify-content: center;
-    // text-align: center;
-  }
-
-  .post-text-wrapper {
-    display: flex;
-    flex-direction: column;
-
-    .quotes {
-      // border: 2px solid blue;
-      font-size: 60px;
-      display: flex;
-      font-family: 'Secular One', sans-serif;
-
-      &:last-child {
-        text-align: right;
-        align-self: flex-end;
-        margin-top: -30px;
-      }
-    }
-    .post-text {
-      // border: 2px solid pink;
-      margin-top: -68px;
-    }
-  }
-
-  .post-urgency {
-    // border: 2px solid blue;
-    margin-top: -35px;    
-    color: #e03fa3;
-  }
-  
-}
 
 h1 {
   text-align: center;
@@ -259,4 +375,5 @@ h1 {
 #profiles-footer {
   margin-top: 15px;
   margin-bottom: 15px;
+  color: #ecebeb;
 }
