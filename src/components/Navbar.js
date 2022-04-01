@@ -40,9 +40,11 @@ const Navbar = () => {
     setOnPage(location.pathname);
     setLoggedIn(checkUserLoggedIn);
     const getData = async () => {
-      const userProfile = await getProfileById(id);
-      console.log('data.body:', userProfile.body);
-      setProfile(userProfile.body);
+      if (getLoggedInUserId()) {
+        const userProfile = await getProfileById(id);
+        console.log('data.body:', userProfile.body);
+        setProfile(userProfile.body);
+      }
     };
     getData();
   }, [location, id]);

@@ -4,6 +4,9 @@ import { registerUser } from '../api/auth';
 
 const Register = () => {
   const navigate = useNavigate();
+  const [error, setError] = React.useState('');
+  const [validationError, setValidationError] = React.useState('');
+  console.log('error', error);
   const [user, setUser] = React.useState({
     firstName: '',
     surname: '',
@@ -14,7 +17,7 @@ const Register = () => {
     city: '',
     region: '',
     imageProfile: '',
-    imageService: ''
+    imageService: '',
   });
 
   function handleChange(event) {
@@ -22,142 +25,150 @@ const Register = () => {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    await registerUser(user);
-    navigate('/login');
+    try {
+      e.preventDefault();
+      await registerUser(user);
+      navigate('/login');
+    } catch (err) {
+      setError(err.response.data.message);
+      setValidationError(err);
+      console.log('All error',err);
+    }
   };
   return (
-    <section className='form-section'>
-      <div className='register-hero'>
-        <form className='register-form' onSubmit={handleSubmit}>
+    <section className="form-section">
+      <div className="register-hero">
+        <form className="register-form" onSubmit={handleSubmit}>
           <h1>Register</h1>
-          <div className='fields'>
-            <div className='fields-left'>
-              <div className='double-field'>
-                <div className='field'>
-                  <label htmlFor='firstName' className='register-label'>
+          <div className="fields">
+            <div className="fields-left">
+              <div className="double-field">
+                <div className="field">
+                  <label htmlFor="firstName" className="register-label">
                     First Name*
                   </label>
                   <input
-                    className='register-input'
-                    type='text'
-                    name='firstName'
-                    id='firstName'
+                    className="register-input"
+                    type="text"
+                    name="firstName"
+                    id="firstName"
                     onChange={handleChange}
                     value={user.firstName}
-                    autoComplete='off'
+                    autoComplete="off"
                     required
                   />
                 </div>
-                <div className='field'>
-                  <label htmlFor='surname' className='register-label'>
+                <div className="field">
+                  <label htmlFor="surname" className="register-label">
                     Surname*
                   </label>
                   <input
-                    className='register-input'
-                    type='text'
-                    name='surname'
-                    id='surname'
+                    className="register-input"
+                    type="text"
+                    name="surname"
+                    id="surname"
                     onChange={handleChange}
                     value={user.surname}
-                    autoComplete='off'
+                    autoComplete="off"
                     required
                   />
                 </div>
               </div>
-              <div className='field'>
-                <label htmlFor='email' className='register-label'>
+              <div className="field">
+                <label htmlFor="email" className="register-label">
                   Email*
                 </label>
                 <input
-                  className='register-input'
-                  type='email'
-                  name='email'
-                  id='email'
+                  className="register-input"
+                  type="email"
+                  name="email"
+                  id="email"
                   onChange={handleChange}
                   value={user.email}
-                  autoComplete='off'
+                  autoComplete="off"
                   required
                 />
               </div>
-              <div className='field'>
-                <label htmlFor='password' className='register-label'>
+              <div className="field">
+                <label htmlFor="password" className="register-label">
                   Password*
                 </label>
                 <input
-                  className='register-input'
-                  type='password'
-                  placeholder='Requirements: Length > 8, one...'
-                  name='password'
-                  id='password'
+                  className="register-input"
+                  type="password"
+                  placeholder="Requirements: Length > 8, one..."
+                  name="password"
+                  id="password"
                   onChange={handleChange}
                   value={user.password}
-                  autoComplete='off'
+                  autoComplete="off"
                   required
                 />
               </div>
-              <div className='field'>
-                <label htmlFor='passwordConfirmation' className='register-label'>
+              <div className="field">
+                <label
+                  htmlFor="passwordConfirmation"
+                  className="register-label"
+                >
                   Password Confirmation*
                 </label>
                 <input
-                  className='register-input'
-                  type='password'
-                  placeholder='...uppercase, lowercase & number'
-                  name='passwordConfirmation'
-                  id='passwordConfirmation'
+                  className="register-input"
+                  type="password"
+                  placeholder="...uppercase, lowercase & number"
+                  name="passwordConfirmation"
+                  id="passwordConfirmation"
                   onChange={handleChange}
                   value={user.passwordConfirmation}
-                  autoComplete='off'
+                  autoComplete="off"
                   required
                 />
               </div>
             </div>
-            <div className='fields-right'>
-              <div className='field first'>
-                <label htmlFor='services' className='register-label optional'>
+            <div className="fields-right">
+              <div className="field first">
+                <label htmlFor="services" className="register-label optional">
                   Services (if you'd like to help)
                 </label>
                 <input
-                  className='register-input'
-                  type='text'
-                  placeholder='Painting, tutoring, dog walking, therapy...'
-                  name='services'
-                  id='services'
+                  className="register-input"
+                  type="text"
+                  placeholder="Painting, tutoring, dog walking, therapy..."
+                  name="services"
+                  id="services"
                   onChange={handleChange}
                   value={user.services}
-                  autoComplete='off'
+                  autoComplete="off"
                 />
               </div>
-              <div className='double-field unequal'>
-                <div className='field'>
-                  <label htmlFor='city' className='register-label'>
+              <div className="double-field unequal">
+                <div className="field">
+                  <label htmlFor="city" className="register-label">
                     City*
                   </label>
                   <input
-                    className='register-input'
-                    type='text'
-                    placeholder='Enter your city'
-                    name='city'
-                    id='city'
+                    className="register-input"
+                    type="text"
+                    placeholder="Enter your city"
+                    name="city"
+                    id="city"
                     onChange={handleChange}
                     value={user.city}
-                    autoComplete='off'
+                    autoComplete="off"
                     required
                   />
                 </div>
-                <div className='field'>
-                  <label htmlFor='region' className='register-label'>
+                <div className="field">
+                  <label htmlFor="region" className="register-label">
                     Region*
                   </label>
                   <select
                     className="register-input"
                     type="text"
-                    placeholder="North/West/Central..."
                     name="region"
                     id="region"
                     onChange={handleChange}
-                    value={user.region}
+                    value={user.region.value}
                     autoComplete="off"
                     required
                   >
@@ -176,51 +187,60 @@ const Register = () => {
                   </select>
                 </div>
               </div>
-              <div className='field'>
-                <label htmlFor='imageProfile' className='register-label optional'>
+              <div className="field">
+                <label
+                  htmlFor="imageProfile"
+                  className="register-label optional"
+                >
                   Your Profile Picture
                 </label>
                 <input
-                  className='register-input'
-                  type='text'
-                  placeholder='Add a friendly picture of yourself!'
-                  name='imageProfile'
-                  id='imageProfile'
+                  className="register-input"
+                  type="text"
+                  placeholder="Add a friendly picture of yourself!"
+                  name="imageProfile"
+                  id="imageProfile"
                   onChange={handleChange}
                   value={user.imageProfile}
-                  autoComplete='off'
+                  autoComplete="off"
                 />
               </div>
-              <div className='field'>
-                <label htmlFor='imageService' className='register-label optional'>
+              <div className="field">
+                <label
+                  htmlFor="imageService"
+                  className="register-label optional"
+                >
                   Image of your service
                 </label>
                 <input
-                  className='register-input'
-                  type='text'
-                  placeholder='Add an image of your service'
-                  name='imageService'
-                  id='imageService'
+                  className="register-input"
+                  type="text"
+                  placeholder="Add an image of your service"
+                  name="imageService"
+                  id="imageService"
                   onChange={handleChange}
                   value={user.imageService}
-                  autoComplete='off'
+                  autoComplete="off"
                 />
               </div>
             </div>
           </div>
-          <p className='footnote'>You can always edit your repsonses later.</p>
-          <p className='footnote'>* Required fields</p>
-          <button type='submit'>Register</button>
+          <p className="footnote">You can always edit your repsonses later.</p>
+          <p className="footnote">* Required fields</p>
+          <button type="submit">Register</button>
+          {error && <p>⛔️ {error}</p>}
+          {validationError && <p>⛔️ Password requirements are not satisfied</p>}
           <p>
             Already have an account?&nbsp;
-            <Link className='redirect-page' to={'/login'}>
+            <Link className="redirect-page" to={'/login'}>
               Log in
             </Link>
           </p>
         </form>
       </div>
-      <footer id='login-register-footer'>
-        Created at GA SEI62 &#126; Copyright &copy; 2022 A. Borges, E. Daykin, M. Mohamed
+      <footer id="login-register-footer">
+        Created at GA SEI62 &#126; Copyright &copy; 2022 A. Borges, E. Daykin,
+        M. Mohamed
       </footer>
     </section>
   );
