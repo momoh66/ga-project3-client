@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { getAllPosts } from '../api/posts';
 import { getAllProfiles, searchProfile } from '../api/profiles';
-import { createPost } from '../api/posts';
+import { createPost, deletePost } from '../api/posts';
 import { useNavigate, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -55,8 +55,6 @@ const Profiles = ({ extractDate, extractTime }) => {
   }
 
   function handlePostInputChange(e) {
-    console.log('e.target.name', e.target.name);
-    console.log('e.target.value', e.target.value);
     setNewPostData({ ...newPostData, [e.target.name]: e.target.value });
   }
   async function handleSubmitPost(e) {
@@ -64,6 +62,11 @@ const Profiles = ({ extractDate, extractTime }) => {
     await createPost(newPostData);
     setNewPostData({ text: '', service: '', urgency: '' });
     setCreatePostPopup(!createPostPopup);
+    getPostData();
+  }
+
+  async function handleDeletePost(postId) {
+    await deletePost(postId);
     getPostData();
   }
 
@@ -152,6 +155,13 @@ const Profiles = ({ extractDate, extractTime }) => {
                 return (
                   <div key={post._id} className='each-post'>
                     <p className='post-creator'>{`${post.createdByName} ${post.createdBySurname}`}</p>
+                    {getLoggedInUserId() === post.createdById && (
+                      <FontAwesomeIcon
+                        className='delete-post'
+                        icon={faXmark}
+                        onClick={() => handleDeletePost(post._id)}
+                      />
+                    )}
                     <p className='post-datetime'>{`${extractTime(post.createdAt)}, ${extractDate(
                       post.createdAt
                     )}`}</p>

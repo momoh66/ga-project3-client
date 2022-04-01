@@ -98,6 +98,7 @@
   margin: 15px;
   border-radius: 5px;
   max-width: 300px;
+  position: relative;
 
   // first post will have reduced margin top
   &:first-of-type {
@@ -166,6 +167,18 @@
     // border: 2px solid blue;
     margin-top: -35px;
     color: #e03fa3;
+  }
+}
+
+.delete-post {
+  color: #b90000;
+  position: absolute;
+  right: 6%;
+  transition: 0.3s ease-in-out;
+  
+  &:hover {
+    transform: scale(1.4);
+    cursor: pointer;
   }
 }
 

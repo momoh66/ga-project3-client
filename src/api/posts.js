@@ -28,7 +28,7 @@ export const createPost = async (postBody) => {
   return data;
 };
 
-export const updatePosts = async (postId, postBody) => {
+export const updatePost = async (postId, postBody) => {
   const options = {
     method: 'PUT',
     url: `/api/posts/${postId}`,
@@ -42,7 +42,7 @@ export const updatePosts = async (postId, postBody) => {
   return data;
 };
 
-export const deletePosts = async (postId) => {
+export const deletePost = async (postId) => {
   const options = {
     method: 'DELETE',
     url: `/api/posts/${postId}`,
