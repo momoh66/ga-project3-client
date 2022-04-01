@@ -9,7 +9,7 @@ export const getAllProfiles = async () => {
     url: '/api/profiles'
   };
   const { data } = await axios.request(options);
-  console.log('data', data);
+  // console.log('data', data);
   return data;
 };
 
@@ -19,7 +19,7 @@ export const getProfileById = async (id) => {
     url: `/api/single-profile/${id}`
   };
   const { data } = await axios.request(options);
-  console.log('data', data);
+  // console.log('data', data);
   return data;
 };
 

@@ -22,14 +22,14 @@ const Profiles = ({ extractDate, extractTime }) => {
 
   const getPostData = async () => {
     const allPosts = await getAllPosts();
-    console.log('allPosts', allPosts);
+    // console.log('allPosts', allPosts);
     setPosts(allPosts);
   };
 
   useEffect(() => {
     const getProfileData = async () => {
       const allProfiles = await getAllProfiles();
-      console.log('allProfiles', allProfiles.body);
+      // console.log('allProfiles', allProfiles.body);
       setProfiles(allProfiles.body);
     };
     getProfileData();

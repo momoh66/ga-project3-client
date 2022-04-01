@@ -21,7 +21,6 @@ import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   let location = useLocation();
-  console.log('location.pathname', location.pathname);
   const id = getLoggedInUserId();
   const [sideBar, setSideBar] = useState(false);
   const [onPage, setOnPage] = useState(location.pathname);
@@ -42,15 +41,12 @@ const Navbar = () => {
     const getData = async () => {
       if (getLoggedInUserId()) {
         const userProfile = await getProfileById(id);
-        console.log('data.body:', userProfile.body);
+        // console.log('data.body:', userProfile.body);
         setProfile(userProfile.body);
       }
     };
     getData();
   }, [location, id]);
-
-  console.log('onPage', onPage);
-  console.log('loggedInUserId', getLoggedInUserId());
 
   const toggleMenu = () => setSideBar(!sideBar);
 
