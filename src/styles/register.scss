@@ -15,13 +15,13 @@
   justify-content: space-between;
   width: 700px;
 
-  .first {  
+  .first {
     margin-top: 0;
   }
-
 }
 
-input, select {
+input,
+select {
   font-family: inherit;
   padding: 10px;
   border-radius: 5px;
@@ -86,4 +86,13 @@ select {
   color: #fff;
   margin-top: 20px;
   margin-bottom: 10px;
+}
+
+@media (max-width: 750px) {
+  .fields {
+    display: inline-block;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: unset;
+  }
 }
