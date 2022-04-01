@@ -68,7 +68,7 @@ const About = () => {
             <div className='creator-border'>
               <div className='creator mo'>
                 <img
-                  className='creator-img'
+                  className='creator-img creator-img-mo'
                   src='https://ca.slack-edge.com/T0351JZQ0-U02STMWJE8K-0f48c0c833d1-512'
                   alt='mo picture'
                 />
@@ -92,8 +92,8 @@ const About = () => {
           <h1>Acknowledgements</h1>
           <div className='about-text'>
             <p>
-              We would like to acknowledge our fellow GA classmates who have consented to sharing
-              their picture on our website as example users.
+              We would like to acknowledge our GA friends who have consented to sharing their
+              picture on our website as example users.
             </p>
             <div className='users-container'>
               <div className='user ash'>

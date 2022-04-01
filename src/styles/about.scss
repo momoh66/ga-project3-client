@@ -10,6 +10,7 @@
 
   h1 {
     margin: 0;
+    text-align: left;
   }
 }
 
@@ -110,6 +111,11 @@ footer {
 .emily,
 .mo {
   margin: 7px;
+}
+
+.creator-img-mo {
+  // height: 200px;
+  object-fit: center top;
 }
 
 .users-container {

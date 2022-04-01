@@ -14,10 +14,11 @@ export const getAllPosts = async () => {
 // ! ------ STRETCH GOALS - test these at the end ------ ! //
 // ! --------------------------------------------------- ! //
 
-export const createPosts = async () => {
+export const createPost = async (postBody) => {
   const options = {
     method: 'POST',
     url: '/api/posts',
+    data: postBody,
     headers: {
       authorization: `Bearer ${window.sessionStorage.getItem('token')}`
     }

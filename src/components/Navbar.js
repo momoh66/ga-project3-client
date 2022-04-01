@@ -101,18 +101,18 @@ const Navbar = () => {
           About
         </Link>
         <Link
+          to={'/profiles'}
+          className={onPage === '/profiles' ? 'sidebar-item on-page' : 'sidebar-item'}
+        >
+          <FontAwesomeIcon icon={faPeopleRoof} />
+          Feed / Profiles
+        </Link>
+        <Link
           to={'/neighbourhoods'}
           className={onPage === '/neighbourhoods' ? 'sidebar-item on-page' : 'sidebar-item'}
         >
           <FontAwesomeIcon icon={faTree} />
           Neighbourhoods
-        </Link>
-        <Link
-          to={'/profiles'}
-          className={onPage === '/profiles' ? 'sidebar-item on-page' : 'sidebar-item'}
-        >
-          <FontAwesomeIcon icon={faPeopleRoof} />
-          Feed/Profiles
         </Link>
         <Link
           to={'/services'}

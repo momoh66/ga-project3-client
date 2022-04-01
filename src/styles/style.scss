@@ -58,15 +58,6 @@ form {
     color: #8c8c8c;
     // text-align: center;
     font-size: 14px;
-
-    .redirect-page {
-      text-decoration: none;
-      color: var(--theme-blue);
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
   }
 
   button {
@@ -91,3 +82,12 @@ form {
     }
   }
 }
+
+.redirect-page {
+      text-decoration: none;
+      color: var(--theme-blue);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }

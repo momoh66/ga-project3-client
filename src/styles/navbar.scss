@@ -130,20 +130,17 @@ header {
 }
 .welcome-banner{
   color: #fff;
-  // text-align: left;
-  // font-size: 30px;
   font-weight: 300;
   background: linear-gradient(90deg, var(--theme-purple), var(--theme-blue));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: flex;
   flex-direction: column;
-  // border: 2px solid blue;
   font-size: 16px;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  width: 130px;
-  padding-right: 10px;
+  width: 200px;
+  padding-right: 15px;
 
   span {
     // border: 2px solid yellow;

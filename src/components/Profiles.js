@@ -1,15 +1,30 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { getAllPosts } from '../api/posts';
-import { getAllProfiles } from '../api/profiles';
-import { searchProfile } from '../api/profiles';
-import { useNavigate } from 'react-router-dom';
+import { getAllProfiles, searchProfile } from '../api/profiles';
+import { createPost } from '../api/posts';
+import { useNavigate, Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { getLoggedInUserId } from '../lib/auth';
 
 const Profiles = ({ extractDate, extractTime }) => {
   const navigate = useNavigate();
   const [profiles, setProfiles] = useState(null);
   const [posts, setPosts] = useState(null);
   const [searchInput, setSearchInput] = useState('');
+  const [createPostPopup, setCreatePostPopup] = useState(false);
+  const [newPostData, setNewPostData] = useState({
+    text: '',
+    service: '',
+    urgency: ''
+  });
+
+  const getPostData = async () => {
+    const allPosts = await getAllPosts();
+    console.log('allPosts', allPosts);
+    setPosts(allPosts);
+  };
 
   useEffect(() => {
     const getProfileData = async () => {
@@ -17,14 +32,11 @@ const Profiles = ({ extractDate, extractTime }) => {
       console.log('allProfiles', allProfiles.body);
       setProfiles(allProfiles.body);
     };
-    const getPostData = async () => {
-      const allPosts = await getAllPosts();
-      console.log('allPosts', allPosts);
-      setPosts(allPosts);
-    };
     getProfileData();
     getPostData();
   }, []);
+
+  const createPostClicked = () => setCreatePostPopup(!createPostPopup);
 
   const filterProfiles = async () => {
     console.log('searchingProfile...');
@@ -42,6 +54,19 @@ const Profiles = ({ extractDate, extractTime }) => {
     navigate(`/single-profile/${id}`);
   }
 
+  function handlePostInputChange(e) {
+    console.log('e.target.name', e.target.name);
+    console.log('e.target.value', e.target.value);
+    setNewPostData({ ...newPostData, [e.target.name]: e.target.value });
+  }
+  async function handleSubmitPost(e) {
+    e.preventDefault();
+    await createPost(newPostData);
+    setNewPostData({ text: '', service: '', urgency: '' });
+    setCreatePostPopup(!createPostPopup);
+    getPostData();
+  }
+
   return (
     <section className='feed-and-profiles-section'>
       <div className='search-wrapper'>
@@ -56,6 +81,67 @@ const Profiles = ({ extractDate, extractTime }) => {
       <div className='feed-and-profiles-container'>
         <div className='feed-section'>
           <h1>News Feed</h1>
+          <button className='add-post-button' onClick={createPostClicked}>
+            Create New Post
+          </button>
+          <div className={createPostPopup ? 'add-post-window' : 'hide'}>
+            <h1>Create a new Post</h1>
+            <FontAwesomeIcon
+              className='close-new-post'
+              icon={faXmark}
+              onClick={createPostClicked}
+            />
+            <label className='new-post-label' htmlFor='new-post-text'>
+              Text*
+            </label>
+            <textarea
+              className='new-post-input'
+              name='text'
+              id='new-post-text'
+              placeholder='What would you like help with?'
+              cols='30'
+              rows='5'
+              value={newPostData.text}
+              onChange={handlePostInputChange}
+            ></textarea>
+            <label className='new-post-label' htmlFor='new-post-service'>
+              Service(s) Required*
+            </label>
+            <input
+              className='new-post-input'
+              type='text'
+              name='service'
+              id='new-post-service'
+              placeholder='Baby sitting, electronics repair, decorating...'
+              value={newPostData.service}
+              onChange={handlePostInputChange}
+            />
+            <label className='new-post-label' htmlFor='new-post-urgency'>
+              Urgency
+            </label>
+            <input
+              className='new-post-input'
+              type='text'
+              name='urgency'
+              id='new-post-urgency'
+              placeholder='How urgent is your request?'
+              value={newPostData.urgency}
+              onChange={handlePostInputChange}
+            />
+            <button
+              className={getLoggedInUserId() ? 'submit-new-post' : 'submit-new-post-disallowed'}
+              onClick={handleSubmitPost}
+            >
+              Submit
+            </button>
+            <p className={!getLoggedInUserId() ? 'logged-in-warning' : 'hide'}>
+              You must be{' '}
+              <Link className='redirect-page' to={'/login'}>
+                logged in
+              </Link>{' '}
+              to create a post.
+            </p>
+          </div>
           <div className='feed-container'>
             {!posts ? (
               <p>Loading Feed...</p>
