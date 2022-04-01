@@ -10,7 +10,7 @@ export const loginUser = async (credentials) => {
   };
 
   const { data } = await axios.request(options);
-  console.log('data', data);
+  // console.log('data', data);
   if (data.token) {
     window.sessionStorage.setItem('token', data.token);
   } else {

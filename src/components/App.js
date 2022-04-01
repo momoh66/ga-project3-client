@@ -10,7 +10,12 @@ import Services from './Services';
 import Register from './Register';
 import Login from './auth/Login';
 import ServiceProfiles from './ServiceProfiles';
+import axios from 'axios';
 
+if (process.env.NODE_ENV === 'production') {
+  // as opposed to 'local'
+  axios.defaults.baseURL = 'https://neighbour-needs.herokuapp.com';
+}
 
 const App = () => {
   function extractDate(timestamp) {
@@ -24,28 +29,21 @@ const App = () => {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/neighbourhoods" element={<Neighbourhoods />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/neighbourhoods' element={<Neighbourhoods />} />
         <Route
-          path="/profiles"
-          element={
-            <Profiles extractDate={extractDate} extractTime={extractTime} />
-          }
+          path='/profiles'
+          element={<Profiles extractDate={extractDate} extractTime={extractTime} />}
         />
         <Route
-          path="/single-profile/:id"
-          element={
-            <SingleProfile
-              extractDate={extractDate}
-              extractTime={extractTime}
-            />
-          }
+          path='/single-profile/:id'
+          element={<SingleProfile extractDate={extractDate} extractTime={extractTime} />}
         />
-        <Route path="/services" element={<Services />} />
-        <Route path="/services/profiles" element={<ServiceProfiles />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path='/services' element={<Services />} />
+        <Route path='/services/profiles' element={<ServiceProfiles />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

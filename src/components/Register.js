@@ -7,6 +7,7 @@ const Register = () => {
   const [error, setError] = React.useState('');
   const [validationError, setValidationError] = React.useState('');
   console.log('error', error);
+
   const [user, setUser] = React.useState({
     firstName: '',
     surname: '',
@@ -37,7 +38,7 @@ const Register = () => {
     } catch (err) {
       setError(err.response.data.message);
       setValidationError(err);
-      console.log('All error', err);
+      // console.log('All error', err);
     }
   };
   return (
