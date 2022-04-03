@@ -1,6 +1,5 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { getLoggedInUserId } from '../lib/auth';
 import { getProfileById } from '../api/profiles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,7 +16,6 @@ import {
   faCircleUser
 } from '@fortawesome/free-solid-svg-icons';
 import treeImg from '../images/tree.png';
-import { useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   let location = useLocation();
