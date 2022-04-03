@@ -1,5 +1,7 @@
-# Neighbour Needs - Front End App
-Neighbour Needs is a full stack MERN application (MongoDB, Express, React and Node) that allows users to find people in their neighbourhood who can help with anything from maths tutoring and interior design, to plumbing and therapy. This project was created by Ana Borges, Emily Daykin and Mohamed Mohamed in the span of just over a week. This repo contains code for the front end client only; code for the back end api lives [here](https://github.com/momoh66/ga-project3-api). For a full list of this app's features, see the [Features](#features) section below.
+# Neighbour Needs
+Neighbour Needs is a full stack MERN application (MongoDB, Express, React and Node) that allows users to find people in their neighbourhood who can help with anything from maths tutoring and interior design, to plumbing and therapy. This project was created by Ana Borges, Emily Daykin and Mohamed Mohamed in the span of just over a week. For a full list of this app's features, see the [Features](#features) section below.
+
+**This repo contains code for the front end client only; code for the back end api lives [here](https://github.com/momoh66/ga-project3-api).**
 
 ## Installation
 - Check out the live application [here](https://neighbour-needs.netlify.app/)!
