@@ -131,7 +131,7 @@ const Register = () => {
             <div className='fields-right'>
               <div className='field first'>
                 <label htmlFor='services' className='register-label optional'>
-                  Services (if you'd like to help others)
+                  Services (if you'd like to help)
                 </label>
                 <input
                   className='register-input'
@@ -221,11 +221,11 @@ const Register = () => {
               </div>
             </div>
           </div>
-          <p className='footnote'>You can always edit your repsonses later.</p>
+          <p className='footnote'>You can edit your repsonses later.</p>
           <p className='footnote'>* Required fields</p>
           <button type='submit'>Register</button>
           {error && <p>⛔️ {error}</p>}
-          {validationError && <p>⛔️ Password requirements are not satisfied</p>}
+          {/* {validationError && <p>⛔️ Password requirements are not satisfied</p>} */}
           <p>
             Already have an account?&nbsp;
             <Link className='redirect-page' to={'/login'}>

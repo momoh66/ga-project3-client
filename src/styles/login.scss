@@ -34,3 +34,24 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+@media (max-width: 525px) {
+  .login-hero {
+    padding: 40px;
+  }
+
+  #login-footer {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 430px) {
+  .login-hero {
+    padding: 30px;
+  }
+
+  .input {
+    width: 200px;
+  }
+
+}

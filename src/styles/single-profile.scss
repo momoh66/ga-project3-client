@@ -321,3 +321,46 @@
 }
 
 
+@media (max-width: 720px) {
+  .user-profile {
+    flex-direction: column;
+  }
+  .singleProfile-hero {
+    padding: 30px 20px 60px 20px;
+  }
+  .singleProfile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-info {
+    margin: 30px 25px 0 25px;
+  }
+  .comments-section {
+    width: 70%;
+  }
+  .comment-show {
+    flex-direction: column;
+    align-items: center;
+    // justify-content: space-around;
+  }
+
+  .leave-comment-container {
+    width: 80%;
+    // align-items: center;
+    padding-right: 20px;
+  }
+
+  .comments-container {
+    margin-top: 20px;
+    text-align: center;
+    height: 200px;
+  }
+}
+
+@media (max-width: 525px) {
+
+  #single-profile-footer {
+    padding: 0 30px;
+  }
+}

@@ -111,3 +111,28 @@
   color: #f1f1f1;
 }
 
+@media (max-width: 525px) {
+  #neighbourhoods-footer {
+    padding: 0 20px;
+  }
+
+  .neighbourhoods-hero {
+    h1 {
+      margin-top: 30px;
+      margin-left: 35px;
+    }
+    .instructions {
+      margin: -5px 50px 20px 50px;
+    }
+  }
+
+  .neighbourhood-border {
+    margin: 10px;
+  }
+
+  .neighbourhood-card {
+    font-size: 27px;
+    padding: 20px 30px;
+    margin: 10px;
+  }
+}
