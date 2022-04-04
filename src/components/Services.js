@@ -59,6 +59,9 @@ const Services = () => {
           )}
         </div>
       </div>
+      <footer id='services-footer'>
+        Created at GA SEI62 &#126; Copyright &copy; 2022 A. Borges, E. Daykin, M. Mohamed
+      </footer>
     </section>
   );
 };

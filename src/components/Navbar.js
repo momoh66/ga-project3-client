@@ -55,7 +55,7 @@ const Navbar = () => {
       <div className='navbar'>
         <Link to={'/'} className='navbar-item logo'>
           <img src={treeImg} alt='tree logo' className='treelogo' />
-          Neighbour Needs
+          <p className='neighbour-needs-logo-text'>Neighbour Needs</p>
         </Link>
 
         <div className='navbar-right'>

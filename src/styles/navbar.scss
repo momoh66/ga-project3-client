@@ -153,3 +153,35 @@ header {
     }
   }
 }
+
+@media (max-width: 640px) {
+  // so that welcome banner doesn't make the logo wrap 2 lines
+  .neighbour-needs-logo-text {
+    display: none;
+  }
+}
+
+@media (max-width: 425px) {
+
+  .sidebar {
+    width: 100vw;
+    padding-right: 0;
+  }
+  
+  .sidebar-item {
+    margin: 0 35px;
+    padding-right: 0;
+    padding-left: 30px;
+    font-size: 25px;
+
+    &:first-of-type {
+      padding-top: 0;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .sidebar-item {
+    padding-left: 0;
+  }
+}

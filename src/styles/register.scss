@@ -6,8 +6,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  // height: 485px;
-  // border: 2px solid blue;
 }
 
 .fields {
@@ -96,3 +94,62 @@ select {
     width: unset;
   }
 }
+
+@media (max-width: 525px) {
+  .register-hero {
+    padding: 30px;
+  }
+
+  .register-form {
+    padding: 30px;
+  }
+
+  #register-footer {
+    padding: 0 30px;
+  }
+}
+
+@media (max-width: 430px) {
+
+  .register-input {
+    width: 200px;
+  }
+
+  .double-field .field .register-input {
+    width: 200px;
+  }
+
+  .unequal>.field:first-of-type {
+    .register-input {
+      width: 200px;
+    }
+  }
+  
+  .unequal>.field:last-of-type {
+    .register-input {
+      width: 224px;
+    }
+  }
+
+  .fields {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+  }
+
+  .register-form {
+    width: 80%;
+  }
+
+  .double-field {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+

@@ -83,10 +83,12 @@ const Profiles = ({ extractDate, extractTime }) => {
       </div>
       <div className='feed-and-profiles-container'>
         <div className='feed-section'>
-          <h1>News Feed</h1>
-          <button className='add-post-button' onClick={createPostClicked}>
-            Create New Post
-          </button>
+          <div className='feed-heading-responsive'>
+            <h1>News Feed</h1>
+            <button className='add-post-button' onClick={createPostClicked}>
+              Create New Post
+            </button>
+          </div>
           <div className={createPostPopup ? 'add-post-window' : 'hide'}>
             <h1>Create a new Post</h1>
             <FontAwesomeIcon
