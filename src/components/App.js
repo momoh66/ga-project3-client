@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './Navbar';
 import Home from './Home';
@@ -10,7 +11,6 @@ import Services from './Services';
 import Register from './Register';
 import Login from './auth/Login';
 import ServiceProfiles from './ServiceProfiles';
-import axios from 'axios';
 
 if (process.env.NODE_ENV === 'production') {
   // as opposed to 'local'
