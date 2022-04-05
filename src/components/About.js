@@ -148,6 +148,32 @@ const About = () => {
                   </div>
                 </div>
               </div>
+              <div className='user dani'>
+                <img
+                  className='user-img'
+                  src='https://ca.slack-edge.com/T0351JZQ0-U02RYCN2K40-a47e8895f34c-512'
+                  alt='Dani picture'
+                />
+                <div className='user-text'>
+                  <h5>Calum M.</h5>
+                  <div className='links'>
+                    <div className='link'>
+                      <a target='_blank' href='https://github.com/dani-gordon/' rel='noreferrer'>
+                        <img src={githubLogo} alt='github logo' width='20px' />
+                      </a>
+                    </div>
+                    <div className='link'>
+                      <a
+                        target='_blank'
+                        href='https://www.linkedin.com/in/dani-gordon-47b2986/'
+                        rel='noreferrer'
+                      >
+                        <img src={linkedinLogo} alt='linkedin logo' width='20px' />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className='user ed'>
                 <img
                   className='user-img'
