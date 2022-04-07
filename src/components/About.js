@@ -38,7 +38,10 @@ const About = () => {
                       <a href='#'>LinkedIn</a>
                     </div>
                   </div>
-                  <p>Tristan Hall fangirl.</p>
+                  <p>
+                    Hey, I'm Ana! Check out my LinkedIn and GitHub pages above, and don't hesitate
+                    to get in touch!
+                  </p>
                 </div>
               </div>
             </div>
@@ -61,7 +64,10 @@ const About = () => {
                       <a href='#'>LinkedIn</a>
                     </div>
                   </div>
-                  <p>Relationship goals: Simon Clemson and Milo Bedini.</p>
+                  <p>
+                    Hi! I'm Emily, a Data Scientist by training venturing deeper into the Software
+                    Engineering space. Check out my GitHub and LinkedIn!
+                  </p>
                 </div>
               </div>
             </div>
@@ -84,7 +90,10 @@ const About = () => {
                       <a href='#'>LinkedIn</a>
                     </div>
                   </div>
-                  <p>Nick Hayes wannabe.</p>
+                  <p>
+                    Most people call me Mo. I’m a Mechanical Engineer student turned avid coder. The
+                    links to my LinkedIn and GitHub are above. Make yourself at home.
+                  </p>
                 </div>
               </div>
             </div>
@@ -140,6 +149,32 @@ const About = () => {
                       <a
                         target='_blank'
                         href='https://www.linkedin.com/in/calum-maceachen-b21847176/'
+                        rel='noreferrer'
+                      >
+                        <img src={linkedinLogo} alt='linkedin logo' width='20px' />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className='user dani'>
+                <img
+                  className='user-img'
+                  src='https://ca.slack-edge.com/T0351JZQ0-U02RYCN2K40-a47e8895f34c-512'
+                  alt='Dani picture'
+                />
+                <div className='user-text'>
+                  <h5>Dani G.</h5>
+                  <div className='links'>
+                    <div className='link'>
+                      <a target='_blank' href='https://github.com/dani-gordon/' rel='noreferrer'>
+                        <img src={githubLogo} alt='github logo' width='20px' />
+                      </a>
+                    </div>
+                    <div className='link'>
+                      <a
+                        target='_blank'
+                        href='https://www.linkedin.com/in/dani-gordon-47b2986/'
                         rel='noreferrer'
                       >
                         <img src={linkedinLogo} alt='linkedin logo' width='20px' />
