@@ -13,7 +13,46 @@ Neighbour Needs is a full stack MERN application (MongoDB, Express, React and No
   - [Back End](https://github.com/momoh66/ga-project3-api): Clone this repo &#8594; run `npm install` &#8594; run `npm run seed` &#8594; run `npm run start:server` 
 
 ## Application Walkthrough
-(Screenshots and gifs)
+### Home & About Pages
+<p align="center">
+  <img src="./src/images/home_page.png" width="46%"  />
+  <img src="./src/images/about_page.png" width="49.4%"  />
+</p>
+
+### Sidebar, Welcome Banner & Login Page
+<p align="center">
+  <img src="./src/images/login_sidebar.png" width="48.2%"  />
+  <img src="./src/images/sidebar_welcome.png" width="48%"  />
+</p>
+
+### Feed & Profiles Page
+<p align="center">
+  <img src="./src/images/feed_profiles_page.png" width="90%"  />
+</p>
+
+### Creating a New Post
+<p align="center">
+  <img src="./src/images/create_new_post.png" width="90%"  />
+</p>
+
+### Neighbourhoods & Services Pages
+<p align="center">
+  <img src="./src/images/neighbourhoods_page.png" width="48%"  />
+  <img src="./src/images/services_page.png" width="48.1%"  />
+</p>
+
+### Individual and Filtered Profile Pages
+<p align="center">
+  <img src="./src/images/single_profile.png" width="37%"  />
+  <img src="./src/images/services_filter_page.png" width="49.5%"  />
+</p>
+
+### Responsive Design
+<p align="center">
+  <img src="./src/images/responsiveness_feed_profiles.png" width="30%"  />
+  <img src="./src/images/responsiveness_single_profile.png" width="29%"  />
+  <img src="./src/images/responsiveness_register.png" width="36%"  />
+</p>
 
 ## Tech Stack
 ### Front End
